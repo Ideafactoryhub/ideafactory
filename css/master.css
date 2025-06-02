@@ -318,13 +318,7 @@ body {
 }
 .tilt-card img {
   transform: scale(1);
-  box-shadow: 1rem 1rem 0 var(--btn-color);
-}
-.introduction-text .image:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-.introduction-text .image img:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 1rem 1rem var(--btn-color);
 }
 @media (max-width: 870px) {
   .home-page .container {
