@@ -9,16 +9,15 @@
   --main-color: rgb(23, 23, 23);
   --btn-color: #d4af37;
   --text-color: #575757;
-  --skilltext-color: rgba(255, 255, 255, 0.39);
+  --skilltext-color: rgba(255, 255, 255, 0.6);
   --background-color: #cac3c3;
 }
 .dark-theme {
   --background-color: #000000;
-  --skilltext-color: rgba(118, 118, 118, 0.39);
-  --heading-color: #ffffff;
-  --main-color: rgb(55 54 54);
-  --text-color: #aaaaaacf;
-  --btn-color: #dfc455;
+  --skilltext-color: rgb(0 0 0);
+  --heading-color: #8e8e83;
+  --btn-color: #dfb713;
+  --text-color: #e5e2e2;
 }
 
 * {
@@ -319,7 +318,7 @@ body {
 }
 .tilt-card img {
   transform: scale(1);
-  box-shadow: 1.2rem 1.2rem 0.5rem var(--btn-color);
+  box-shadow: 1rem 1rem 0 var(--btn-color);
 }
 .introduction-text .image:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -573,7 +572,7 @@ body {
 }
 .experience .desc p {
   font-size: 1rem;
-  color: var(--text-color);
+  color: var(--heading-color);
   line-height: 1.4;
   font-weight: bold;
   text-align: center;
@@ -687,18 +686,19 @@ body {
 /* Start Contact us */
 .contact {
   min-height: 100vh;
-  background-image: url(../imgs/contact.png);
-  background-size: cover;
   background-position: center;
   position: relative;
+  background-color: rgb(255 255 255 / 80%);
 }
 .contact .overlay {
+  background-image: url(../imgs/contact.png);
+  opacity: 0.8;
+  background-size: cover;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
 }
 .contact .container {
   position: absolute;
@@ -776,11 +776,11 @@ form .select {
   background: #82848a7a;
 }
 form .select {
-  width: 56%;
+  width: 50%;
 }
 .img-upload {
   position: relative;
-  width: 40%;
+  width: 50%;
   margin-left: 3%;
 }
 .img-upload input[type='file'] {
@@ -790,7 +790,7 @@ form .select {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding-left: 3rem;
+  padding: 0.9rem 0 0 3rem;
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid #333;
@@ -882,9 +882,9 @@ form .button-area {
 /* footer section starts */
 .footer {
   position: relative;
-  background: var(--heading-color);
+  background: var(--main-color);
   width: 100%;
-  height: 30rem;
+  height: 75vh;
 }
 .footer .box-container {
   display: flex;
@@ -904,6 +904,7 @@ form .button-area {
 }
 .footer .box-container .box p {
   font-size: 1rem;
+  line-height: 1.8;
   color: #ccc;
   padding: 0.7rem 0;
   text-transform: none;
@@ -994,6 +995,14 @@ form .button-area {
   }
   .footer .box-container .box {
     flex: 1 1 50%;
+  }
+  .footer .rights {
+    top: 90%;
+    height: 5%;
+  }
+  .footer .credit {
+    top: 95%;
+    height: 5%;
   }
 }
 /* footer section ends */
