@@ -25,7 +25,9 @@
   --box-shadow2: 15px 15px 30px rgb(255, 255, 255);
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -37,9 +39,9 @@
 }
 
 html {
-  font-size: 90%;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  font-size: 90%;
 }
 body {
   font-family: 'Poppins', sans-serif;
@@ -362,7 +364,7 @@ body {
   .tilt-wrapper {
     max-width: 100%;
     left: 5%;
-    top: 56%;
+    top: 62%;
     width: 50rem;
   }
   .tilt-wrapper.active2 {
@@ -396,6 +398,7 @@ body {
   }
 }
 /* End Home Page */
+
 /* Start About us */
 .about-us {
   width: 100%;
@@ -1000,12 +1003,12 @@ form .button-area {
     flex: 1 1 50%;
   }
   .footer .rights {
-    top: 90%;
+    top: 92%;
     font-size: 0.8rem;
     padding-top: 2%;
   }
   .footer .credit {
-    top: 95%;
+    top: 96%;
     padding-top: 2%;
   }
   .credit .container {
