@@ -1,7 +1,7 @@
 {
   "name": "your-project-name",
   "version": "1.0.0",
-  "description": "",
+  "description": "Visit My Portfolio Website",
   "main": "index.js",
   "scripts": {
     "format": "prettier --write ."
@@ -18,5 +18,18 @@
     "printWidth": 80,
     "tabWidth": 2,
     "useTabs": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ideafactoryhub/ideafactory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ideafactoryhub/ideafactory/issues"
+  },
+  "homepage": "https://github.com/Ideafactoryhub/ideafactory#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "stripe": "^18.2.1"
   }
 }

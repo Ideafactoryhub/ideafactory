@@ -25,12 +25,13 @@ function handleActive(ev) {
   ev.target.parentElement.querySelectorAll('.active').forEach((element) => {
     element.classList.remove('active');
   });
+  // Add active to clicked link
+  ev.target.classList.add('active');
 }
 
 allLinks.forEach((link) => link.addEventListener('click', handleActive));
 
-// ========== Scroll To Top Button ==========
-
+// Scroll To Top Button
 const scrollTopBtn = document.getElementById('scroll-top');
 
 window.addEventListener('scroll', () => {
@@ -41,13 +42,29 @@ window.addEventListener('scroll', () => {
   }
 });
 
-scrollTopBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+// Support Button
+
+const supportBtn = document.getElementById('supportUs');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    supportBtn.classList.add('active');
+  } else {
+    supportBtn.classList.remove('active');
+  }
 });
 
-// ========== Tilt Card Effect on Mouse Move ==========
+supportBtn.addEventListener('click', (e) => {
+  e.preventDefault();
 
+  // Your PayPal.me link (replace YOUR_PAYPAL_ME_LINK)
+  const url = 'https://paypal.me/hamzaelbeialy';
+
+  // Open a small popup window
+  window.open(url, 'paypalDonate', 'width=600,height=700,scrollbars=yes');
+});
+
+// Tilt Card Effect on Mouse Move
 const card = document.getElementById('tiltCard');
 const container = document.getElementById('tiltContainer');
 
@@ -70,7 +87,7 @@ container.addEventListener('mouseleave', () => {
   card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
 });
 
-// DOM elements
+// Your scroll-triggered animations for experience/contact sections
 const showText = document.getElementById('home');
 const tiltCard = document.getElementById('tiltContainer');
 const aboutText = document.getElementById('infoBox');
@@ -120,38 +137,38 @@ const experienceElementsLarge = [
 const experienceElementsSmall = [
   {
     el: document.getElementById('cont1'),
-    min: 63 * 16,
-    max: 120 * 16,
+    min: 80 * 16,
+    max: 140 * 16,
     class: 'active1',
   },
   {
     el: document.getElementById('cont2'),
-    min: 73 * 16,
-    max: 132 * 16,
+    min: 90 * 16,
+    max: 150 * 16,
     class: 'active2',
   },
   {
     el: document.getElementById('cont3'),
-    min: 82 * 16,
-    max: 145 * 16,
+    min: 102 * 16,
+    max: 162 * 16,
     class: 'active3',
   },
   {
     el: document.getElementById('cont4'),
-    min: 89 * 16,
-    max: 157 * 16,
+    min: 110 * 16,
+    max: 172 * 16,
     class: 'active4',
   },
   {
     el: document.getElementById('cont5'),
-    min: 107 * 16,
-    max: 165 * 16,
+    min: 122 * 16,
+    max: 182 * 16,
     class: 'active5',
   },
   {
     el: document.getElementById('cont6'),
-    min: 115 * 16,
-    max: 175 * 16,
+    min: 130 * 16,
+    max: 195 * 16,
     class: 'active6',
   },
 ];
@@ -162,34 +179,30 @@ const contactTriggersLarge = [
 ];
 
 const contactTriggersSmall = [
-  // { el: contactLeft, min: 145 * 16, max: 250 * 16, class: 'active1' },
-  { el: contactForm, min: 145 * 16, max: 250 * 16, class: 'active2' },
+  //{ el: contactLeft, min: 145 * 16, max: 250 * 16, class: 'active1' },
+  { el: contactForm, min: 164 * 16, max: 280 * 16, class: 'active2' },
 ];
 
-// Trigger ranges
 const textTriggerAtLarge = 23 * 16;
 const cardTriggerAtLarge = 23 * 16;
 const aboutMinTriggerLarge = 18 * 16;
 const aboutMaxTriggerLarge = 55 * 16;
 
-const textTriggerAtSmall = 35 * 16;
-const cardTriggerAtSmall = 35 * 16;
+const textTriggerAtSmall = 40 * 16;
+const cardTriggerAtSmall = 40 * 16;
 const aboutMinTriggerSmall = 13 * 16;
-const aboutMaxTriggerSmall = 90 * 16;
+const aboutMaxTriggerSmall = 125 * 16;
 
-// On page load, activate home section animations
 window.addEventListener('load', () => {
   showText.classList.add('active1');
   tiltCard.classList.add('active2');
 });
 
-// Scroll event with responsive behavior
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   const isSmallScreen = window.innerWidth <= 870;
 
   if (!isSmallScreen) {
-    // Large screen behavior
     showText.classList.toggle('active1', scrollY < textTriggerAtLarge);
     tiltCard.classList.toggle('active2', scrollY < cardTriggerAtLarge);
 
@@ -208,7 +221,6 @@ window.addEventListener('scroll', () => {
       el.classList.toggle(className, isInRange);
     });
   } else {
-    // Small screen behavior: use different trigger ranges (customize here)
     showText.classList.toggle('active1', scrollY < textTriggerAtSmall);
     tiltCard.classList.toggle('active2', scrollY < cardTriggerAtSmall);
 
@@ -229,13 +241,11 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Optional: Handle window resize to re-apply scroll logic correctly
 window.addEventListener('resize', () => {
   window.dispatchEvent(new Event('scroll'));
 });
 
-// ========== Mobile Menu Toggle ==========
-
+// Mobile Menu Toggle
 const toggleBtn = document.querySelector('.header-area .toggle-menu');
 const linksContainer = document.querySelector('.header-area .links-container');
 
@@ -244,7 +254,6 @@ toggleBtn.onclick = () => {
   linksContainer.classList.toggle('active');
 };
 
-// Close mobile menu when a nav link is clicked
 allLinks.forEach((link) => {
   link.addEventListener('click', () => {
     toggleBtn.classList.remove('active');
@@ -252,13 +261,12 @@ allLinks.forEach((link) => {
   });
 });
 
-// // change theme
+// Change Theme
 const themeBtn = document.querySelector('.theme-btn');
 
 themeBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark-theme');
 
   themeBtn.querySelector('span.sun').classList.toggle('active');
-
   themeBtn.querySelector('span.moon').classList.toggle('active');
 });

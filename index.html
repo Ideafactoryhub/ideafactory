@@ -60,7 +60,9 @@
               IdeaFactory
             </h2>
             <p>
-              Ideas have the power to change the world. Share yours to
+              Ideas have the power to change the world.
+              <br />
+              Share yours to
               <strong>Idea Factory</strong>
             </p>
             <div class="about-btn">
@@ -226,7 +228,7 @@
 
         <div class="morebtn">
           <a
-            href="https://www.linkedin.com/in/hamza-ahmad-94571731b"
+            href="https://web.facebook.com/profile.php?id=61577015096606"
             class="btn"
             target="_blank"
           >
@@ -306,7 +308,7 @@
     <footer class="footer">
       <div class="box-container">
         <div class="box">
-          <h3>IdeaFactory Portfolio</h3>
+          <h3>IdeaFactory Community</h3>
           <p>
             Thank you for visiting our website. We will be happy with telling us
             your idea, Don't forget to follow us on social media.
@@ -357,12 +359,78 @@
       </div>
     </footer>
     <!-- Scroll to Top -->
-    <a
-      href="#"
-      class="fas fa-hand-point-up"
-      id="scroll-top"
-      aria-label="ScrollTop"
-    ></a>
+    <div class="scroll">
+      <a
+        href="#"
+        class="fas fa-hand-point-up"
+        id="scroll-top"
+        aria-label="ScrollTop"
+      ></a>
+      <div class="tooltip">Scroll Top</div>
+    </div>
+    <!-- Support Us -->
+    <!-- Support Button -->
+    <div class="support">
+      <a
+        href="#"
+        id="supportUs"
+        class="fa-solid fa-circle-dollar-to-slot"
+        aria-label="support-us"
+      ></a>
+      <div class="tooltip">Support Us</div>
+    </div>
+
+    <!-- Support Button -->
+    <!-- <button id="supportUs" class="support-btn">Support Me</button> -->
+
+    <!-- Modal Popup -->
+    <div
+      id="paypalModal"
+      class="modal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div
+        style="
+          background: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          position: relative;
+          max-width: 400px;
+          width: 90%;
+        "
+      >
+        <button
+          id="closeModal"
+          style="position: absolute; top: 10px; right: 10px"
+        >
+          X
+        </button>
+
+        <!-- Paste your PayPal donate button form here -->
+        <form
+          action="https://www.paypal.com/donate"
+          method="post"
+          target="_top"
+        >
+          <input
+            type="hidden"
+            name="hosted_button_id"
+            value="YOUR_HOSTED_BUTTON_ID"
+          />
+          <input type="submit" value="Donate with PayPal" />
+        </form>
+      </div>
+    </div>
 
     <script src="js/master.js"></script>
   </body>
