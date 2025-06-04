@@ -22,7 +22,7 @@
   --text-color: #e5e2e2;
   --main-color: rgb(31, 31, 31);
   --box-shadow: 0 10px 15px rgba(255, 255, 255, 0.5);
-  --box-shadow2: 15px 15px 30px white;
+  --box-shadow2: 15px 15px 30px rgb(255, 255, 255);
 }
 
 * {
