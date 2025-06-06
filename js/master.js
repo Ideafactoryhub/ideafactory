@@ -186,7 +186,7 @@ const contactTriggersSmall = [
 const textTriggerAtLarge = 23 * 16;
 const cardTriggerAtLarge = 23 * 16;
 const aboutMinTriggerLarge = 18 * 16;
-const aboutMaxTriggerLarge = 55 * 16;
+const aboutMaxTriggerLarge = 65 * 16;
 
 const textTriggerAtSmall = 40 * 16;
 const cardTriggerAtSmall = 40 * 16;

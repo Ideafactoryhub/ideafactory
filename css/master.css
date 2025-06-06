@@ -665,7 +665,7 @@ body {
   }
   .experience .container.right .arrow-icons,
   .experience .container.left .arrow-icons {
-    left: -5.2%;
+    left: -6%;
     top: 35%;
   }
   .morebtn .btn span {
@@ -693,7 +693,7 @@ body {
   min-height: 100vh;
   background-position: center;
   position: relative;
-  background-color: rgb(255 255 255 / 80%);
+  background: rgb(148 148 148 / 60%);
 }
 .contact .overlay {
   background-image: url(../imgs/contact.png);
@@ -1110,7 +1110,7 @@ form .button-area {
   left: 5rem;
   bottom: 6%;
   opacity: 0;
-  width: 7rem;
+  width: 8rem;
   height: 3rem;
   background: var(--main-color);
   color: var(--btn-color);
