@@ -389,7 +389,7 @@ body {
     top: 13%;
   }
   .introduction-text .content h2 {
-    font-size: 2.2rem;
+    font-size: 2.7rem;
     margin-top: 1.8rem;
   }
   .introduction-text .content p {
@@ -422,6 +422,7 @@ body {
 .about-us {
   width: 100%;
   padding: 2rem 0 4rem;
+  text-align: center;
 }
 .about-us .container {
   width: 80%;
@@ -429,11 +430,27 @@ body {
   min-height: 35rem;
 }
 .about-us h2 {
+  position: relative;
   font-size: 3.5rem;
-  text-align: center;
   margin-bottom: 2rem;
   color: var(--btn-color);
   -webkit-text-stroke: 3px var(--heading2-color);
+  display: inline-block;
+}
+
+@keyframes underlineGrow {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0%;
+    left: 100%;
+  }
 }
 
 .about-content {
@@ -501,6 +518,7 @@ body {
 /* End About Me */
 .experience {
   position: relative;
+  text-align: center;
   width: 100%;
   min-height: 92vh;
   padding: 2rem 0;
@@ -512,14 +530,14 @@ body {
   margin: 0 auto;
 }
 .experience .heading {
-  width: 100%;
-  text-align: center;
+  display: inline-block;
   font-size: 3.5rem;
   color: var(--btn-color);
   -webkit-text-stroke: 3px var(--heading2-color);
   margin-bottom: 1.5rem;
   position: relative;
 }
+
 .experience .timeline::after {
   content: '';
   position: absolute;
@@ -577,6 +595,7 @@ body {
   height: 0;
   width: 0;
   position: absolute;
+
   border: medium solid #eee;
 }
 .experience .left::before {
@@ -727,6 +746,7 @@ body {
 .contact {
   height: 41rem;
   background-position: center;
+  text-align: center;
   position: relative;
   background: rgb(172 172 172 / 50%);
 }
@@ -760,12 +780,13 @@ body {
   transform: translateX(0);
 }
 .contact h2 {
+  position: relative;
+  display: inline-block;
   font-size: 3.5rem;
   color: var(--btn-color);
   -webkit-text-stroke: 3px var(--heading2-color);
   text-align: center;
   margin-top: 3rem;
-  width: 100%;
 }
 .contact .contact-pic img {
   width: 18rem;
@@ -778,6 +799,7 @@ body {
   transform: translateX(2rem);
   margin-right: 3%;
   width: 60%;
+  font-family: 'Nunito', sans-serif;
   transition: all 0.5s ease-in;
 }
 .contact-form.active2 {
@@ -832,8 +854,9 @@ form .select {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 0.9rem 0 0 2.8rem;
-  font-size: 0.7rem;
+  left: 0;
+  text-align: center;
+  padding-top: 0.9rem;
   border-radius: 5px;
   border: 1px solid #333;
   background: var(--form-color);
@@ -1181,4 +1204,17 @@ form .button-area {
   .tooltip {
     display: none;
   }
+}
+
+.about-us h2::before,
+.experience .heading::before,
+.contact h2::before {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 0%;
+  left: 0;
+  bottom: -5px;
+  background-color: var(--heading2-color);
+  animation: underlineGrow 2s infinite linear;
 }
