@@ -93,38 +93,38 @@ const contactForm = document.getElementById('contact-form');
 const experienceElementsLarge = [
   {
     el: document.getElementById('cont1'),
-    min: 55 * 16,
-    max: 110 * 16,
+    min: 48 * 16,
+    max: 115 * 16,
     class: 'active1',
   },
   {
     el: document.getElementById('cont2'),
-    min: 63 * 16,
+    min: 55 * 16,
     max: 122 * 16,
     class: 'active2',
   },
   {
     el: document.getElementById('cont3'),
-    min: 69 * 16,
-    max: 128 * 16,
+    min: 62 * 16,
+    max: 129 * 16,
     class: 'active3',
   },
   {
     el: document.getElementById('cont4'),
-    min: 75 * 16,
-    max: 137 * 16,
+    min: 69 * 16,
+    max: 136 * 16,
     class: 'active4',
   },
   {
     el: document.getElementById('cont5'),
-    min: 83 * 16,
-    max: 145 * 16,
+    min: 76 * 16,
+    max: 143 * 16,
     class: 'active5',
   },
   {
     el: document.getElementById('cont6'),
-    min: 91 * 16,
-    max: 155 * 16,
+    min: 83 * 16,
+    max: 150 * 16,
     class: 'active6',
   },
 ];
@@ -132,38 +132,38 @@ const experienceElementsLarge = [
 const experienceElementsSmall = [
   {
     el: document.getElementById('cont1'),
-    min: 80 * 16,
-    max: 140 * 16,
+    min: 58 * 16,
+    max: 150 * 16,
     class: 'active1',
   },
   {
     el: document.getElementById('cont2'),
-    min: 90 * 16,
-    max: 150 * 16,
+    min: 66 * 16,
+    max: 158 * 16,
     class: 'active2',
   },
   {
     el: document.getElementById('cont3'),
-    min: 102 * 16,
-    max: 162 * 16,
+    min: 74 * 16,
+    max: 166 * 16,
     class: 'active3',
   },
   {
     el: document.getElementById('cont4'),
-    min: 110 * 16,
-    max: 172 * 16,
+    min: 82 * 16,
+    max: 174 * 16,
     class: 'active4',
   },
   {
     el: document.getElementById('cont5'),
-    min: 122 * 16,
+    min: 90 * 16,
     max: 182 * 16,
     class: 'active5',
   },
   {
     el: document.getElementById('cont6'),
-    min: 130 * 16,
-    max: 195 * 16,
+    min: 98 * 16,
+    max: 190 * 16,
     class: 'active6',
   },
 ];
@@ -174,17 +174,17 @@ const contactTriggersLarge = [
 ];
 
 const contactTriggersSmall = [
-  { el: contactForm, min: 145 * 16, max: 280 * 16, class: 'active2' },
+  { el: contactForm, min: 120 * 16, max: 280 * 16, class: 'active2' },
 ];
 
-const textTriggerAtLarge = 23 * 16;
-const cardTriggerAtLarge = 23 * 16;
-const aboutMinTriggerLarge = 18 * 16;
+const textTriggerAtLarge = 27 * 16;
+const cardTriggerAtLarge = 27 * 16;
+const aboutMinTriggerLarge = 15 * 16;
 const aboutMaxTriggerLarge = 65 * 16;
 
 const textTriggerAtSmall = 40 * 16;
 const cardTriggerAtSmall = 40 * 16;
-const aboutMinTriggerSmall = 13 * 16;
+const aboutMinTriggerSmall = 10 * 16;
 const aboutMaxTriggerSmall = 125 * 16;
 
 window.addEventListener('load', () => {
