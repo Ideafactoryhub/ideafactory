@@ -18,7 +18,7 @@
   --form-color: #7173787a;
 }
 .dark-theme {
-  --background-color: rgb(40 40 40);
+  --background-color: rgb(20, 20, 20);
   --heading-color: #9a9a97;
   --heading2-color: #6a6a6a;
   --btn-color: #dfb713;
