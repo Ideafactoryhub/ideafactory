@@ -472,6 +472,7 @@ body {
   transform: translateX(0);
 }
 .info-box p {
+  text-align: left;
   font-size: 1.2rem;
   line-height: 2.3rem;
   color: var(--text-color);
@@ -499,6 +500,7 @@ body {
   }
   .info-box p {
     line-height: 2rem;
+    text-align: center;
   }
   .info-box {
     width: 100%;
