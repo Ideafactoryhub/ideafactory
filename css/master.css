@@ -6,7 +6,7 @@
   --heading-color: rgb(0, 0, 0);
   --heading2-color: rgb(0, 0, 0);
   --hover-color: #4a4d37f5;
-  --bluehover-color: #8a8956c1;
+  --bluehover-color: #a4a24bc1;
   --main-color: rgb(23, 23, 23);
   --btn-color: #d4af37;
   --text-color: #575757;
@@ -125,7 +125,6 @@ body {
   transition: 0.3s ease;
 }
 .header-area .links li a:hover,
-.header-area .links li a.active,
 .header-area .toggle-menu {
   color: var(--bluehover-color);
 }
