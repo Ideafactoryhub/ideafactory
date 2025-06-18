@@ -746,7 +746,7 @@ body {
   background-position: center;
   text-align: center;
   position: relative;
-  background: rgb(172 172 172 / 50%);
+  background: rgb(150 150 150 / 40%);
 }
 .contact .overlay {
   background-image: url(../imgs/contact.png);
