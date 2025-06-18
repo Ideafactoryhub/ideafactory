@@ -23,7 +23,7 @@ allLinks.forEach((link) => {
     const targetSelector = link.dataset.section || link.getAttribute('href');
     const target = document.querySelector(targetSelector);
     if (target) {
-      const yOffset = -80; // Adjust based on your fixed header height
+      const yOffset = -80;
       const y =
         target.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
@@ -44,12 +44,22 @@ window.addEventListener('scroll', () => {
 
 // Support Button
 const supportBtn = document.getElementById('supportUs');
+const supportBtn2 = document.getElementById('supportUs2');
 
 window.addEventListener('scroll', () => {
   supportBtn.classList.toggle('active', window.scrollY > 100);
+  supportBtn2.classList.toggle('active', window.scrollY > 100);
 });
 
 supportBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.open(
+    'https://paypal.me/hamzaelbeialy',
+    'paypalDonate',
+    'width=600,height=700,scrollbars=yes',
+  );
+});
+supportBtn2.addEventListener('click', (e) => {
   e.preventDefault();
   window.open(
     'https://paypal.me/hamzaelbeialy',
