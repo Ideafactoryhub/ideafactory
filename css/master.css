@@ -151,13 +151,13 @@ body {
   margin-bottom: 0.5rem;
 }
 .toggle-menu.active .top {
-  transform: rotate(225deg) translate(-1.1rem, 0);
+  transform: rotate(-132deg) translate(-0.8rem, -0.6rem);
 }
 .toggle-menu.active .middle {
   opacity: 0;
 }
 .toggle-menu.active .bottom {
-  transform: rotate(-45deg) translate(1rem, 0);
+  transform: rotate(-48deg) translate(0.4rem, -0.4rem);
 }
 @media (max-width: 870px) {
   .header-area .links-container {
