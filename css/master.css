@@ -85,7 +85,7 @@ body {
   background: rgb(182 180 180);
   width: 4rem;
   height: 2.2rem;
-  border-radius: 3em;
+  border-radius: 12px;
   cursor: pointer;
 }
 .header-area .theme-btn .sun {
@@ -103,7 +103,7 @@ body {
 }
 .header-area .theme-btn .active {
   background-color: #3e3e3e;
-  border-radius: 3em;
+  border-radius: 12px;
   color: var(--btn-color);
 }
 .header-area .links-container {
@@ -747,7 +747,7 @@ body {
   background-position: center;
   text-align: center;
   position: relative;
-  background: rgb(150 150 150 / 40%);
+  background: rgb(150 150 150 / 20%);
 }
 .contact .overlay {
   background-image: url(../imgs/contact.png);
