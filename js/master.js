@@ -92,158 +92,62 @@ container.addEventListener('mouseleave', () => {
   card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
 });
 
-// Scroll-triggered animations
-const showText = document.getElementById('home');
-const tiltCard = document.getElementById('tiltContainer');
-const aboutText = document.getElementById('infoBox');
-const aboutImg = document.getElementById('aboutImg');
-const contactLeft = document.getElementById('contactLeft');
-const contactForm = document.getElementById('contact-form');
+// Scroll-triggered animations using IntersectionObserver
+const observeFade = (el, className) => {
+  if (!el) return;
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.add(className);
+      } else {
+        el.classList.remove(className);
+      }
+    },
+    { threshold: 0.15 },
+  );
+  observer.observe(el);
+};
 
-const experienceElementsLarge = [
-  {
-    el: document.getElementById('cont1'),
-    min: 48 * 16,
-    max: 115 * 16,
-    class: 'active1',
-  },
-  {
-    el: document.getElementById('cont2'),
-    min: 55 * 16,
-    max: 122 * 16,
-    class: 'active2',
-  },
-  {
-    el: document.getElementById('cont3'),
-    min: 62 * 16,
-    max: 129 * 16,
-    class: 'active3',
-  },
-  {
-    el: document.getElementById('cont4'),
-    min: 69 * 16,
-    max: 136 * 16,
-    class: 'active4',
-  },
-  {
-    el: document.getElementById('cont5'),
-    min: 76 * 16,
-    max: 143 * 16,
-    class: 'active5',
-  },
-  {
-    el: document.getElementById('cont6'),
-    min: 83 * 16,
-    max: 150 * 16,
-    class: 'active6',
-  },
-];
+// Observe key sections
+observeFade(document.getElementById('home'), 'active1');
+observeFade(document.getElementById('tiltContainer'), 'active2');
+observeFade(document.getElementById('infoBox'), 'active1');
+observeFade(document.getElementById('aboutImg'), 'active2');
+observeFade(document.getElementById('contactLeft'), 'active1');
+observeFade(document.getElementById('contact-form'), 'active2');
 
-const experienceElementsSmall = [
-  {
-    el: document.getElementById('cont1'),
-    min: 58 * 16,
-    max: 150 * 16,
-    class: 'active1',
-  },
-  {
-    el: document.getElementById('cont2'),
-    min: 66 * 16,
-    max: 158 * 16,
-    class: 'active2',
-  },
-  {
-    el: document.getElementById('cont3'),
-    min: 74 * 16,
-    max: 166 * 16,
-    class: 'active3',
-  },
-  {
-    el: document.getElementById('cont4'),
-    min: 82 * 16,
-    max: 174 * 16,
-    class: 'active4',
-  },
-  {
-    el: document.getElementById('cont5'),
-    min: 90 * 16,
-    max: 182 * 16,
-    class: 'active5',
-  },
-  {
-    el: document.getElementById('cont6'),
-    min: 98 * 16,
-    max: 190 * 16,
-    class: 'active6',
-  },
-];
-
-const contactTriggersLarge = [
-  { el: contactLeft, min: 115 * 16, max: 185 * 16, class: 'active1' },
-  { el: contactForm, min: 115 * 16, max: 185 * 16, class: 'active2' },
-];
-
-const contactTriggersSmall = [
-  { el: contactForm, min: 120 * 16, max: 280 * 16, class: 'active2' },
-];
-
-const textTriggerAtLarge = 27 * 16;
-const cardTriggerAtLarge = 27 * 16;
-const aboutMinTriggerLarge = 15 * 16;
-const aboutMaxTriggerLarge = 65 * 16;
-
-const textTriggerAtSmall = 40 * 16;
-const cardTriggerAtSmall = 40 * 16;
-const aboutMinTriggerSmall = 10 * 16;
-const aboutMaxTriggerSmall = 125 * 16;
-
-window.addEventListener('load', () => {
-  showText.classList.add('active1');
-  tiltCard.classList.add('active2');
+// Observe experience elements
+['cont1', 'cont2', 'cont3', 'cont4', 'cont5', 'cont6'].forEach((id, index) => {
+  observeFade(document.getElementById(id), `active${index + 1}`);
 });
 
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  const isSmallScreen = window.innerWidth <= 870;
+// Observe work section elements with delay
+const workSection = document.getElementById('work');
+const work1 = document.getElementById('work1');
+const work2 = document.getElementById('work2');
+const work3 = document.getElementById('work3');
 
-  if (!isSmallScreen) {
-    showText.classList.toggle('active1', scrollY < textTriggerAtLarge);
-    tiltCard.classList.toggle('active2', scrollY < cardTriggerAtLarge);
-
-    const isInAboutRange =
-      scrollY >= aboutMinTriggerLarge && scrollY <= aboutMaxTriggerLarge;
-    aboutText.classList.toggle('active1', isInAboutRange);
-    aboutImg.classList.toggle('active2', isInAboutRange);
-
-    experienceElementsLarge.forEach(({ el, min, max, class: className }) => {
-      el.classList.toggle(className, scrollY >= min && scrollY < max);
-    });
-
-    contactTriggersLarge.forEach(({ el, min, max, class: className }) => {
-      el.classList.toggle(className, scrollY >= min && scrollY < max);
-    });
-  } else {
-    showText.classList.toggle('active1', scrollY < textTriggerAtSmall);
-    tiltCard.classList.toggle('active2', scrollY < cardTriggerAtSmall);
-
-    const isInAboutRange =
-      scrollY >= aboutMinTriggerSmall && scrollY <= aboutMaxTriggerSmall;
-    aboutText.classList.toggle('active1', isInAboutRange);
-    aboutImg.classList.toggle('active2', isInAboutRange);
-
-    experienceElementsSmall.forEach(({ el, min, max, class: className }) => {
-      el.classList.toggle(className, scrollY >= min && scrollY < max);
-    });
-
-    contactTriggersSmall.forEach(({ el, min, max, class: className }) => {
-      el.classList.toggle(className, scrollY >= min && scrollY < max);
-    });
-  }
-});
-
-window.addEventListener('resize', () => {
-  window.dispatchEvent(new Event('scroll'));
-});
+if (workSection && work1 && work2 && work3) {
+  const workObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          work1.classList.add('active');
+          setTimeout(() => work2.classList.add('active'), 500);
+          setTimeout(() => work3.classList.add('active'), 1000);
+        } else if (entry.intersectionRatio === 0) {
+          work1.classList.remove('active');
+          work2.classList.remove('active');
+          work3.classList.remove('active');
+        }
+      });
+    },
+    {
+      threshold: [0, 0.01],
+    },
+  );
+  workObserver.observe(workSection);
+}
 
 // Change Theme
 const themeBtn = document.querySelector('.theme-btn');
