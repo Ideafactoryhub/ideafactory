@@ -55,6 +55,9 @@ body {
   overflow: hidden;
   transition: all 0.5s ease-in;
 }
+h2 {
+  line-height: 1;
+}
 .header-area {
   position: fixed;
   background: var(--main-color);
@@ -72,15 +75,15 @@ body {
 .header-area .logo {
   left: 0;
   position: absolute;
-  top: 0.7rem;
+  top: 0.9rem;
 }
 .header-area .logo img {
-  width: 1.7rem;
+  width: 1.6rem;
 }
 .header-area .theme-btn {
   position: absolute;
-  top: 24%;
-  right: 0%;
+  top: 1.5rem;
+  right: calc(50% - 2rem);
   display: flex;
   background: rgb(182 180 180);
   width: 4rem;
@@ -107,15 +110,23 @@ body {
   color: var(--btn-color);
 }
 .header-area .links-container {
-  right: 15%;
-  top: 33%;
+  position: fixed;
+  right: 10%;
+  top: 1.9rem;
   display: flex;
   align-items: flex-end;
-  position: absolute;
+  transition: 0.5s ease-in;
+  background: var(--main-color);
 }
+
+.header-area .links-container.active {
+  top: 5rem;
+  opacity: 1;
+}
+
 .header-area .links li {
   display: inline-block;
-  margin-left: 2.2rem;
+  margin-left: 2rem;
 }
 .header-area .links li a {
   color: var(--btn-color);
@@ -131,10 +142,10 @@ body {
   content: '';
   position: absolute;
   height: 3px;
-  width: 4.3rem;
+  width: 4.5rem;
   border-radius: 63px;
   background-color: var(--btn-color);
-  bottom: -25px;
+  bottom: -27px;
   left: 50%;
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
@@ -151,15 +162,6 @@ body {
 .toggle-menu .bar {
   border-radius: 2px;
   transition: 0.8s;
-}
-.header-area .toggle-menu.menu-active:before {
-  content: '';
-  border-width: 10px;
-  border-style: solid;
-  border-color: transparent transparent #fff transparent;
-  position: absolute;
-  bottom: -15px;
-  left: 10px;
 }
 .header-area .toggle-menu span {
   display: block;
@@ -178,18 +180,9 @@ body {
 }
 @media (max-width: 870px) {
   .header-area .links-container {
-    opacity: 0;
-    top: -45%;
-    right: 0;
-    display: grid;
-    position: fixed;
     width: 100%;
-    transition: all 0.5s ease-in;
-    background: var(--main-color);
-  }
-  .header-area .active {
-    opacity: 1;
-    top: 4.4rem;
+    right: 0;
+    top: -100%;
   }
   .header-area .toggle-menu {
     position: fixed;
@@ -199,19 +192,22 @@ body {
     top: 1.5rem;
     right: 16%;
   }
+  .header-area .links {
+    display: grid;
+    width: 100%;
+  }
   .header-area .links li {
     margin-left: 0;
     width: 100%;
-    height: 4rem;
+    height: 5rem;
     text-align: center;
     padding-top: 1rem;
   }
   .header-area .links li a {
     font-size: 1.5rem;
   }
-  .header-area .theme-btn {
-    top: 39%;
-    right: calc(50% - 2rem);
+  .header-area .links li a::before {
+    bottom: -6px;
   }
 }
 /* End Header */
