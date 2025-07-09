@@ -28,7 +28,7 @@
   --boxL-shadow: -6px 6px 25px rgba(200, 200, 200, 0.5);
   --boxR-shadow: 6px 6px 25px rgba(200, 200, 200, 0.5);
   --box-shadow2: 20px 20px 25px rgb(128 128 128 / 0.8);
-  --box-shadow3: 0 4px 20px rgb(190 190 190 / 0.5);
+  --box-shadow3: 0 4px 12px rgb(190 190 190 / 0.5);
 }
 
 *,
@@ -226,10 +226,10 @@ h2 {
 #home {
   opacity: 0;
   position: absolute;
-  width: 55%;
-  top: 28%;
+  width: 50%;
+  top: 30%;
   left: 0%;
-  transform: translateX(-2rem);
+  transform: translateX(-3rem);
   transition: all 0.5s ease-in;
   z-index: 1;
 }
@@ -240,7 +240,6 @@ h2 {
 
 .introduction-text .content h2 {
   font-size: 3rem;
-  line-height: 1.1;
   font-weight: 800;
   color: var(--heading-color);
 }
@@ -249,14 +248,13 @@ h2 {
 }
 .introduction-text .content p {
   font-size: 1.5rem;
-  line-height: 1.3;
+  margin-top: 0.4rem;
   color: var(--text-color);
   font-weight: 600;
-  margin-top: 0.5rem;
 }
 .socials .social-icons {
   position: absolute;
-  margin-top: 6.2rem;
+  margin-top: 5.5rem;
   width: 100%;
 }
 .socials .social-icons li {
@@ -283,7 +281,7 @@ h2 {
 }
 .introduction-text .about-btn {
   position: absolute;
-  margin-top: 1.3rem;
+  margin-top: 1rem;
 }
 .introduction-text .btn,
 .introduction-text .btn2 {
@@ -322,7 +320,7 @@ h2 {
 .tilt-wrapper {
   opacity: 0;
   position: absolute;
-  transform: translateX(2rem);
+  transform: translateX(3rem);
   top: 28%;
   max-width: 22rem;
   right: 0;
@@ -386,7 +384,7 @@ h2 {
   .tilt-wrapper {
     max-width: 100%;
     left: 5%;
-    top: 60%;
+    top: 62%;
   }
   .tilt-wrapper.active2 {
     left: 0;
@@ -400,11 +398,10 @@ h2 {
     top: 13%;
   }
   .introduction-text .content h2 {
-    font-size: 2.7rem;
-    margin-top: 2.5rem;
+    font-size: 2.3rem;
   }
   .introduction-text .content p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .introduction-text .about-btn {
     left: calc(50% - 7rem);
@@ -418,10 +415,10 @@ h2 {
     margin-left: 7rem;
   }
   .social-icons a {
-    font-size: 1.8rem;
-    line-height: 3rem;
-    width: 3rem;
-    height: 3rem;
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
   .tilt-card img {
     width: 14rem;
@@ -430,51 +427,37 @@ h2 {
 /* End Home Page */
 
 /* Start About us */
+
 .about-us {
-  width: 100%;
-  padding: 2rem 0 4rem;
+  padding-top: 3rem;
   text-align: center;
+  min-height: 95vh;
 }
 .about-us .container {
   width: 80%;
   margin: 0 auto;
-  min-height: 35rem;
 }
 .about-us h2 {
-  position: relative;
   font-size: 3.5rem;
-  margin-bottom: 2rem;
   color: var(--heading-color);
   display: inline-block;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  position: relative;
 }
-
-@keyframes underlineGrow {
-  0% {
-    width: 0%;
-    left: 0;
-  }
-  50% {
-    width: 100%;
-    left: 0;
-  }
-  100% {
-    width: 0%;
-    left: 100%;
-  }
-}
-
 .about-content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
+  text-align: left;
 }
 .info-box {
-  flex: 1 1 50%;
+  flex: 1 1 55%;
   opacity: 0;
-  transform: translateX(-2rem);
+  transform: translateX(-3rem);
   transition: all 0.5s ease-in;
 }
 .info-box.active1 {
@@ -482,49 +465,53 @@ h2 {
   transform: translateX(0);
 }
 .info-box p {
-  text-align: left;
-  font-size: 1.2rem;
-  line-height: 2.3rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.7;
   color: var(--text-color);
-  margin-bottom: 1rem;
 }
 .about-image {
-  width: 22rem;
-  opacity: 0;
-  transform: translateX(2rem);
+  flex: 1 1 35%;
+  max-width: 24rem;
+  border-radius: 45px;
   box-shadow: var(--box-shadow2);
+  opacity: 0;
+  transform: translateX(3rem);
   transition: all 0.5s ease-in;
 }
 .about-image.active2 {
   opacity: 1;
   transform: translateX(0);
 }
-/* Responsive */
+@media (max-width: 1200px) {
+  .about-image {
+    max-width: 17rem;
+  }
+  .info-box p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
 @media (max-width: 870px) {
+  .about-image {
+    max-width: 20rem;
+  }
   .about-content {
     flex-direction: column;
     text-align: center;
   }
-  .about-us h2 {
-    margin-bottom: 1rem;
-  }
-  .info-box p {
-    line-height: 2rem;
-    text-align: center;
-  }
-  .info-box {
+  .info-box,
+  .about-image {
     width: 100%;
   }
-  .about-image {
-    width: 17rem;
-  }
 }
-@media (max-width: 505px) {
+@media (max-width: 555px) {
   .about-image {
-    width: 15rem;
+    max-width: 17rem;
   }
   .info-box p {
-    line-height: 1.6rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
   }
 }
 /* End About Us */
@@ -569,7 +556,6 @@ h2 {
   width: 50%;
   box-sizing: border-box;
   opacity: 0;
-  /* transform: translateY(4rem); */
   transition: all 0.6s ease-in-out;
 }
 
@@ -587,11 +573,11 @@ h2 {
 /* Container positions */
 .experience .container.left {
   left: -4%;
-  transform: translateX(2rem) translateY(-4rem);
+  transform: translate(2rem, -4rem);
 }
 .experience .container.right {
   left: 54%;
-  transform: translateX(-2rem) translateY(-4rem);
+  transform: translate(-2rem, -4rem);
 }
 
 .experience .container.left .content,
@@ -794,7 +780,7 @@ h2 {
 }
 #contactLeft {
   opacity: 0;
-  transform: translateX(-2rem);
+  transform: translateX(-3rem);
   width: 40%;
   position: absolute;
   top: 27%;
@@ -820,7 +806,7 @@ h2 {
   position: absolute;
   top: 22%;
   right: 0;
-  transform: translateX(2rem);
+  transform: translateX(3rem);
   margin-right: 3%;
   width: 60%;
   font-family: 'Nunito', sans-serif;
@@ -1244,3 +1230,18 @@ form .button-area {
   background-color: var(--heading2-color);
   animation: underlineGrow 2s infinite linear;
 }
+
+/* @keyframes underlineGrow {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0%;
+    left: 100%;
+  }
+} */
