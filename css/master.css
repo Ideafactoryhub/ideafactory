@@ -185,12 +185,12 @@ h2 {
     top: -100%;
   }
   .header-area .toggle-menu {
-    position: fixed;
+    position: absolute;
     cursor: pointer;
     width: 2.4rem;
     height: 2.5rem;
-    top: 1.5rem;
-    right: 16%;
+    top: 0.6rem;
+    right: 0;
   }
   .header-area .links {
     display: grid;
