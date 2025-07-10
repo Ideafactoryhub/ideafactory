@@ -25,8 +25,8 @@
   --text-color: #e5e2e2;
   --main-color: rgb(39 39 39);
   --form-color: #c2c2c2;
-  --boxL-shadow: -12px 12px 8px rgb(175 175 175 / 50%);
-  --boxR-shadow: 12px 12px 8px rgb(175 175 175 / 50%);
+  --boxL-shadow: -10px 10px 8px rgb(175 175 175 / 50%);
+  --boxR-shadow: 10px 10px 8px rgb(175 175 175 / 50%);
   --box-shadow2: 20px 20px 25px rgb(128 128 128 / 0.8);
   --box-shadow3: 0 4px 12px rgb(190 190 190 / 0.5);
 }
@@ -390,10 +390,10 @@ h2 {
     left: 0;
   }
   .tilt-card img {
-    width: 18rem;
+    max-width: 18rem;
   }
 }
-@media (max-width: 505px) {
+@media (max-width: 480px) {
   #home {
     top: 13%;
   }
@@ -421,7 +421,7 @@ h2 {
     height: 2.5rem;
   }
   .tilt-card img {
-    width: 14rem;
+    max-width: 15rem;
   }
 }
 /* End Home Page */
@@ -724,8 +724,8 @@ h2 {
     top: 37%;
   }
 
-  .experience .container.right .content {
-    box-shadow: var(--boxL-shadow);
+  .experience .container.left .content {
+    box-shadow: var(--boxR-shadow);
   }
   .morebtn .btn span {
     font-size: 1.4rem;
