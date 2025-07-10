@@ -188,7 +188,7 @@ h2 {
     position: fixed;
     cursor: pointer;
     width: 2.4rem;
-    height: 2.3rem;
+    height: 2.5rem;
     top: 1.5rem;
     right: 16%;
   }
@@ -383,8 +383,7 @@ h2 {
   .tilt-wrapper {
     max-width: 100%;
     left: 5%;
-    /* top: 62%; */
-    margin-top: 15rem;
+    top: 62%;
   }
   .tilt-wrapper.active2 {
     left: 0;
@@ -429,9 +428,8 @@ h2 {
 /* Start About us */
 
 .about-us {
-  padding-top: 3rem;
   text-align: center;
-  min-height: 95vh;
+  min-height: 70vh;
 }
 .about-us .container {
   width: 80%;
@@ -439,11 +437,9 @@ h2 {
 }
 .about-us h2 {
   font-size: 3.5rem;
+  margin-bottom: 1rem;
   color: var(--heading-color);
   display: inline-block;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  position: relative;
 }
 .about-content {
   display: flex;
@@ -493,6 +489,10 @@ h2 {
   }
 }
 @media (max-width: 870px) {
+  .about-us {
+    min-height: 100vh;
+    margin-top: 4rem;
+  }
   .about-image {
     max-width: 20rem;
   }
@@ -519,7 +519,6 @@ h2 {
   position: relative;
   width: 100%;
   min-height: 95vh;
-  padding-top: 4rem;
   box-sizing: border-box;
   text-align: center;
 }
@@ -703,6 +702,9 @@ h2 {
 
 /* Responsive Fixes */
 @media (max-width: 870px) {
+  .experience {
+    margin-top: 4rem;
+  }
   .experience .container {
     width: 100%;
     padding: 1rem 2rem;
@@ -898,9 +900,9 @@ form .message i {
   left: 15px;
 }
 form .message textarea {
-  min-height: 110px;
-  max-height: 230px;
-  padding: 12px 20px 0 48px;
+  min-height: 7rem;
+  max-height: 15rem;
+  padding: 1rem 0 0 3rem;
 }
 form .message textarea::-webkit-scrollbar {
   width: 0;
