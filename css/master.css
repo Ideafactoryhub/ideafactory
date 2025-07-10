@@ -189,7 +189,7 @@ h2 {
     cursor: pointer;
     width: 2.4rem;
     height: 2.5rem;
-    top: 0.6rem;
+    top: 1.5rem;
     right: 0;
   }
   .header-area .links {
@@ -436,6 +436,7 @@ h2 {
   margin: 0 auto;
 }
 .about-us h2 {
+  position: relative;
   font-size: 3.5rem;
   margin-bottom: 1rem;
   color: var(--heading-color);
@@ -1233,7 +1234,7 @@ form .button-area {
   animation: underlineGrow 2s infinite linear;
 }
 
-/* @keyframes underlineGrow {
+@keyframes underlineGrow {
   0% {
     width: 0%;
     left: 0;
@@ -1246,4 +1247,4 @@ form .button-area {
     width: 0%;
     left: 100%;
   }
-} */
+}
