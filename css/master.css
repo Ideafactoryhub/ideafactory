@@ -585,7 +585,7 @@ h2 {
   background: var(--main-color);
   border-radius: 1rem;
   position: relative;
-  padding: 0.5rem;
+  padding: 1.3rem;
   box-shadow: var(--boxR-shadow);
 }
 
