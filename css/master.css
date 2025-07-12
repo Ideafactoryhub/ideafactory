@@ -44,6 +44,11 @@
   transition: all 0.2s linear;
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--btn-color) var(--main-color);
+}
+
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
