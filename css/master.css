@@ -266,9 +266,9 @@ h2 {
   display: inline-block;
 }
 .social-icons a {
-  font-size: 1.9rem;
+  font-size: 2.4rem;
   display: inline-block;
-  line-height: 3.5rem;
+  line-height: 3.7rem;
   color: var(--btn-color);
   background-color: var(--main-color);
   width: 3.5rem;
@@ -408,7 +408,7 @@ h2 {
     margin-top: 4.5rem;
   }
   .social-icons a {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     line-height: 2.5rem;
     width: 2.5rem;
     height: 2.5rem;
