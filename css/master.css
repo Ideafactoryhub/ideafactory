@@ -149,7 +149,7 @@ h2 {
   width: 4.5rem;
   border-radius: 63px;
   background-color: var(--btn-color);
-  bottom: -27px;
+  bottom: -23px;
   left: 50%;
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
