@@ -54,6 +54,9 @@ html {
   scroll-behavior: smooth;
   font-size: 90%;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--background-color);
@@ -236,13 +239,13 @@ h2 {
   width: 50%;
   top: 30%;
   left: 0%;
-  transform: translateX(-3rem);
+  transform: translateY(-4rem);
   transition: all 0.5s ease-in;
   z-index: 1;
 }
 #home.active1 {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .introduction-text h2 {
@@ -325,7 +328,7 @@ h2 {
 .tilt-wrapper {
   opacity: 0;
   position: absolute;
-  transform: translateX(3rem);
+  transform: translateY(-4rem);
   top: 30%;
   max-width: 20rem;
   right: 0;
@@ -335,7 +338,7 @@ h2 {
 }
 .home-page .active2 {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 .img-cont {
   position: absolute;
