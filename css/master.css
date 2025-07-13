@@ -57,7 +57,6 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--background-color);
-  overflow: hidden;
   transition: all 0.5s ease-in;
 }
 h2 {
@@ -120,7 +119,7 @@ h2 {
   top: 1.9rem;
   display: flex;
   align-items: flex-end;
-  transition: 0.5s ease-in;
+  transition: 0.5s;
   background: var(--main-color);
 }
 
@@ -187,7 +186,9 @@ h2 {
   .header-area .links-container {
     width: 100%;
     right: 0;
-    top: -100%;
+    top: -25rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
   }
   .header-area .toggle-menu {
     position: absolute;
@@ -221,6 +222,7 @@ h2 {
   position: relative;
   width: 100%;
   height: 100vh;
+  overflow: scroll;
 }
 .home-page .container {
   position: absolute;
@@ -243,16 +245,14 @@ h2 {
   transform: translateX(0);
 }
 
-.introduction-text .content h2 {
+.introduction-text h2 {
   font-size: 3rem;
   font-weight: 800;
   color: var(--heading-color);
 }
-.introduction-text .content h2 span {
-  color: var(--heading-color);
-}
-.introduction-text .content p {
+.introduction-text p {
   font-size: 1.5rem;
+  line-height: 1;
   margin-top: 0.4rem;
   color: var(--text-color);
   font-weight: 600;
@@ -274,8 +274,7 @@ h2 {
   width: 3.5rem;
   height: 3.5rem;
   text-align: center;
-  margin-right: 0.3rem;
-  border-radius: 100%;
+  border-radius: 50%;
   box-shadow: var(--box-shadow3);
 }
 .social-icons a:active,
@@ -302,15 +301,16 @@ h2 {
   font-family: 'Nunito', sans-serif;
 }
 .introduction-text .btn2 {
-  margin-left: 9rem;
+  margin-left: 8.5rem;
 }
 .introduction-text .btn span,
 .introduction-text .btn2 span {
   font-weight: bold;
 }
-.introduction-text .btn i {
+.introduction-text .btn i,
+.introduction-text .btn2 i {
   margin-left: 0.3rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   transition: 0.3s;
 }
 .introduction-text .btn:hover,
@@ -326,8 +326,8 @@ h2 {
   opacity: 0;
   position: absolute;
   transform: translateX(3rem);
-  top: 28%;
-  max-width: 22rem;
+  top: 30%;
+  max-width: 20rem;
   right: 0;
   transition: all 0.5s ease-in;
   z-index: 0;
@@ -361,29 +361,13 @@ h2 {
   }
   #home {
     width: 100%;
-    top: 14%;
+    top: 15%;
   }
   .introduction-text .about-btn {
-    left: calc(50% - 8rem);
-  }
-  .introduction-text .btn,
-  .introduction-text .btn2 {
-    font-size: 1.1rem;
-    width: 7rem;
-    left: 0;
+    left: calc(50% - 8.7rem);
   }
   .introduction-text .btn2 {
-    margin-left: 8rem;
-  }
-
-  .introduction-text .btn i {
-    font-size: 1.1rem;
-  }
-  .social-icons a {
-    font-size: 2rem;
-    line-height: 3.5rem;
-    width: 3.5rem;
-    height: 3.5rem;
+    margin-left: 8.7rem;
   }
   .tilt-wrapper {
     max-width: 100%;
@@ -398,25 +382,30 @@ h2 {
   }
 }
 @media (max-width: 480px) {
-  #home {
-    top: 13%;
-  }
-  .introduction-text .content h2 {
+  .introduction-text h2 {
     font-size: 2.3rem;
   }
-  .introduction-text .content p {
+  .introduction-text p {
     font-size: 1.2rem;
   }
   .introduction-text .about-btn {
-    left: calc(50% - 7rem);
+    left: calc(50% - 6rem);
   }
   .introduction-text .btn,
   .introduction-text .btn2 {
-    font-size: 0.9rem;
-    width: 6rem;
+    font-size: 0.8rem;
+    width: 5.5rem;
+    padding: 0.7rem 0.1rem;
   }
   .introduction-text .btn2 {
-    margin-left: 7rem;
+    margin-left: 6rem;
+  }
+  .introduction-text .btn i,
+  .introduction-text .btn2 i {
+    font-size: 0.9rem;
+  }
+  .socials .social-icons {
+    margin-top: 4.5rem;
   }
   .social-icons a {
     font-size: 1.4rem;
@@ -425,13 +414,11 @@ h2 {
     height: 2.5rem;
   }
   .tilt-card img {
-    max-width: 15rem;
+    max-width: 14rem;
   }
 }
 /* End Home Page */
-
-/* Start About us */
-
+/* Start About Us */
 .about-us {
   text-align: center;
   min-height: 70vh;
@@ -964,14 +951,16 @@ form .button-area {
   position: relative;
   background: black;
   width: 100%;
-  height: 36rem;
+  height: 40rem;
   font-family: 'Nunito', sans-serif;
 }
 .footer .box-container {
   display: flex;
-  justify-content: center;
+  position: absolute;
+  padding-top: 3rem;
+  left: 10%;
+  width: 80%;
   flex-wrap: wrap;
-  padding: 4rem;
 }
 .footer .box-container .box {
   flex: 1 1 40%;
@@ -1005,8 +994,8 @@ form .button-area {
 }
 .footer .box-container .box .share {
   display: flex;
-  flex-wrap: nowrap;
-  padding: 1rem 0;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 .footer .box-container .box .share a {
   display: flex;
