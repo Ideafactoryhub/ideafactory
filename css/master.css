@@ -468,6 +468,7 @@ h2 {
 }
 .info-box p {
   font-family: 'Nunito', sans-serif;
+  text-transform: none;
   font-size: 1.8rem;
   line-height: 1.7;
   color: var(--text-color);
@@ -613,14 +614,11 @@ h2 {
 
 .experience .arrow-icons i {
   width: 2rem;
-  height: 1.8rem;
+  height: 2rem;
   font-size: 2rem;
-  border-radius: 50%;
   background: var(--background-color);
   color: var(--heading2-color);
-  line-height: 2rem;
   display: inline-flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -1231,7 +1229,7 @@ form .button-area {
 .contact h2::before {
   content: '';
   position: absolute;
-  height: 2px;
+  height: 3px;
   width: 0%;
   left: 0;
   bottom: -5px;
