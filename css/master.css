@@ -186,7 +186,7 @@ h2 {
   .header-area .links-container {
     width: 100%;
     right: 0;
-    top: -40rem;
+    top: -60vh;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
   }
