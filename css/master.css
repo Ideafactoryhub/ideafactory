@@ -12,7 +12,7 @@
   --boxL-shadow: -10px 10px 7px rgba(0, 0, 0, 0.5);
   --boxR-shadow: 10px 10px 7px rgba(0, 0, 0, 0.5);
   --box-shadow2: 20px 20px 25px rgb(70 55 10 / 80%);
-  --box-shadow3: 0 6px 12px rgb(53 48 12 / 60%);
+  --box-shadow3: 0 6px 12px rgba(50, 47, 24, 0.6);
   --form-color: #696a6d7a;
   --border-radius: 2rem;
 }
@@ -382,7 +382,7 @@ h2 {
     max-width: 18rem;
   }
 }
-@media (max-width: 440px) {
+@media (max-width: 400px) {
   .introduction-text h2 {
     font-size: 2.3rem;
   }
