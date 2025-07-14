@@ -13,9 +13,10 @@
   --background-color: #cdcdcd;
   --boxL-shadow: -10px 10px 7px rgba(0, 0, 0, 0.5);
   --boxR-shadow: 10px 10px 7px rgba(0, 0, 0, 0.5);
-  --box-shadow2: 20px 20px 25px rgb(0, 0, 0, 0.8);
-  --box-shadow3: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --box-shadow2: 20px 20px 25px rgb(70 55 10 / 80%);
+  --box-shadow3: 0 6px 12px rgb(53 48 12 / 60%);
   --form-color: #696a6d7a;
+  --border-radius: 2rem;
 }
 .dark-theme {
   --background-color: rgb(0 0 0);
@@ -26,8 +27,8 @@
   --form-color: #c2c2c2;
   --boxL-shadow: -10px 10px 8px rgb(175 175 175 / 50%);
   --boxR-shadow: 10px 10px 8px rgb(175 175 175 / 50%);
-  --box-shadow2: 20px 20px 8px rgb(97 97 97 / 80%);
-  --box-shadow3: 0 4px 12px rgb(190 190 190 / 0.5);
+  --box-shadow2: 20px 20px 25px rgb(133 105 19 / 80%);
+  --box-shadow3: 0 4px 12px rgb(189 188 90 / 40%);
 }
 *,
 *::before,
@@ -93,7 +94,7 @@ h2 {
   background: rgb(182 180 180);
   width: 4rem;
   height: 2.2rem;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 .header-area .theme-btn .sun {
@@ -111,7 +112,7 @@ h2 {
 }
 .header-area .theme-btn .active {
   background-color: #3e3e3e;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   color: var(--btn-color);
 }
 .header-area .links-container {
@@ -275,7 +276,7 @@ h2 {
   width: 3.5rem;
   height: 3.5rem;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 1.3rem;
   box-shadow: var(--box-shadow3);
 }
 .social-icons a:active,
@@ -294,7 +295,7 @@ h2 {
   padding: 0.9rem 0.11rem;
   width: 8rem;
   text-align: center;
-  border-radius: 3em;
+  border-radius: var(--border-radius);
   font-size: 1.2rem;
   color: var(--btn-color);
   background: var(--main-color);
@@ -350,7 +351,7 @@ h2 {
   width: 100%;
   transition: all 0.5s ease-in;
   transform: scale(1);
-  border-radius: 2rem;
+  border-radius: var(--border-radius);
   box-shadow: 1rem 1rem var(--btn-color);
 }
 .tilt-card:hover img {
@@ -464,7 +465,7 @@ h2 {
 .about-image {
   flex: 1 1 35%;
   max-width: 24rem;
-  border-radius: 2rem;
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow2);
   opacity: 0;
   transform: translateX(3rem);
@@ -513,6 +514,7 @@ h2 {
 .experience {
   position: relative;
   width: 100%;
+  margin-top: 4rem;
   min-height: 95vh;
   box-sizing: border-box;
   text-align: center;
@@ -577,7 +579,7 @@ h2 {
 .experience .container.left .content,
 .experience .container.right .content {
   background: var(--main-color);
-  border-radius: 1rem;
+  border-radius: var(--border-radius);
   position: relative;
   padding: 1.3rem;
   box-shadow: var(--boxR-shadow);
@@ -661,15 +663,15 @@ h2 {
   margin: 2rem 0;
 }
 
-.morebtn .btn {
+/* .morebtn .btn {
   position: relative;
   padding: 1.1rem 1.2rem;
-  border-radius: 0.5em;
+  border-radius: var(--border-radius);
   color: var(--btn-color);
   background: var(--main-color);
   box-shadow: var(--box-shadow3);
   transition: 0.3s;
-}
+} */
 
 .morebtn .btn span {
   font-weight: 600;
@@ -694,9 +696,6 @@ h2 {
 
 /* Responsive Fixes */
 @media (max-width: 870px) {
-  .experience {
-    margin-top: 4rem;
-  }
   .experience .container {
     width: 100%;
     padding: 1rem 2rem;
@@ -902,13 +901,14 @@ form .message textarea::-webkit-scrollbar {
 form .button-area {
   float: right;
 }
-.button-area button {
+.button-area button,
+.morebtn .btn {
   color: var(--btn-color);
   border: none;
   outline: none;
   font-size: 1.5rem;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   padding: 1rem 1.3rem;
   background: var(--main-color);
   box-shadow: var(--box-shadow3);
@@ -952,7 +952,7 @@ form .button-area {
   position: relative;
   background: black;
   width: 100%;
-  height: 40rem;
+  height: 42rem;
   font-family: 'Nunito', sans-serif;
 }
 .footer .box-container {
@@ -1096,7 +1096,7 @@ form .button-area {
   padding: 1.1rem 0.7rem;
   background: var(--main-color);
   color: var(--btn-color);
-  border-radius: 15px;
+  border-radius: 1.3rem;
   cursor: pointer;
 }
 
@@ -1105,23 +1105,24 @@ form .button-area {
   color: var(--main-color);
 }
 
-.scroll .tooltip {
+.scroll .tooltip,
+.support .tooltip {
   position: fixed;
-  right: 4.5rem;
+  right: 5rem;
   bottom: 6%;
   opacity: 0;
-  width: 7rem;
-  height: 3rem;
+  width: 8rem;
   background: var(--main-color);
   color: var(--btn-color);
   text-align: center;
-  padding-top: 1rem;
-  border-radius: 12px;
+  padding: 0.7rem 0;
+  border-radius: var(--border-radius);
   font-size: 1rem;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
-.scroll .tooltip::before {
+.scroll .tooltip::before,
+.support .tooltip::before {
   content: '';
   border-style: solid;
   border-width: 10px;
@@ -1129,7 +1130,7 @@ form .button-area {
   height: 0;
   width: 0;
   position: absolute;
-  right: -16%;
+  right: -14%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -1157,7 +1158,7 @@ form .button-area {
   height: 3.7rem;
   background: var(--main-color);
   color: var(--btn-color);
-  border-radius: 15px;
+  border-radius: 1.3rem;
   cursor: pointer;
 }
 
@@ -1165,34 +1166,12 @@ form .button-area {
   background: var(--btn-color);
   color: var(--main-color);
 }
-
 .support .tooltip {
-  position: fixed;
-  left: 5rem;
-  bottom: 6%;
-  opacity: 0;
-  width: 8rem;
-  height: 3rem;
-  background: var(--main-color);
-  color: var(--btn-color);
-  text-align: center;
-  padding-top: 1rem;
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  left: 5.2rem;
 }
 .support .tooltip::before {
-  content: '';
-  border-style: solid;
-  border-width: 10px;
   border-color: transparent var(--main-color) transparent transparent;
-  height: 0;
-  width: 0;
-  position: absolute;
-  left: -16%;
-  top: 50%;
-  transform: translateY(-50%);
+  left: -14%;
 }
 .support:hover .tooltip {
   opacity: 1;
