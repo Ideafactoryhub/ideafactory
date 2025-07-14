@@ -164,10 +164,17 @@ h2 {
 
 .header-area .toggle-menu {
   background: none;
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  width: 2.4rem;
+  height: 2.5rem;
+  top: 1.5rem;
+  right: 0;
 }
 .toggle-menu .bar {
   border-radius: 2px;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 .header-area .toggle-menu span {
   display: block;
@@ -193,12 +200,7 @@ h2 {
     border-bottom-right-radius: 2rem;
   }
   .header-area .toggle-menu {
-    position: absolute;
-    cursor: pointer;
-    width: 2.4rem;
-    height: 2.5rem;
-    top: 1.5rem;
-    right: 0;
+    display: block;
   }
   .header-area .links {
     display: grid;
@@ -383,7 +385,7 @@ h2 {
     max-width: 18rem;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 440px) {
   .introduction-text h2 {
     font-size: 2.3rem;
   }
@@ -414,6 +416,7 @@ h2 {
     line-height: 2.5rem;
     width: 2.5rem;
     height: 2.5rem;
+    border-radius: 1rem;
   }
   .tilt-card img {
     max-width: 14rem;
