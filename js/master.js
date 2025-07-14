@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // ========== Navigation Scroll and Mobile Menu ==========
-  const allLinks = document.querySelectorAll('.links a');
+  const allLinks = document.querySelectorAll('[data-section]');
   const toggleBtn = document.querySelector('.header-area .toggle-menu');
   const linksContainer = document.querySelector(
     '.header-area .links-container',

@@ -4,9 +4,7 @@
 :root {
   --secondry-color: rgb(0, 0, 0, 0.9);
   --heading-color: rgb(0, 0, 0);
-  --heading2-color: rgb(0, 0, 0);
   --hover-color: #4a4d37f5;
-  --bluehover-color: #a4a24bc1;
   --main-color: rgb(23, 23, 23);
   --btn-color: #d4af37;
   --text-color: #575757;
@@ -21,7 +19,6 @@
 .dark-theme {
   --background-color: rgb(0 0 0);
   --heading-color: #9a9a97;
-  --heading2-color: #6a6a6a;
   --text-color: #e5e2e2;
   --main-color: rgb(26 26 26);
   --form-color: #c2c2c2;
@@ -240,13 +237,13 @@ h2 {
   width: 50%;
   top: 30%;
   left: 0%;
-  transform: translateY(-4rem);
+  transform: translateX(-3rem);
   transition: all 0.5s ease-in;
   z-index: 1;
 }
 #home.active1 {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .introduction-text h2 {
@@ -329,7 +326,7 @@ h2 {
 .tilt-wrapper {
   opacity: 0;
   position: absolute;
-  transform: translateY(4rem);
+  transform: translateX(3rem);
   top: 30%;
   max-width: 20rem;
   right: 0;
@@ -339,7 +336,7 @@ h2 {
 }
 .home-page .active2 {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 .img-cont {
   position: absolute;
@@ -451,12 +448,12 @@ h2 {
 .info-box {
   flex: 1 1 55%;
   opacity: 0;
-  transform: translateX(-3rem);
+  transform: translateY(-3rem);
   transition: all 0.5s ease-in;
 }
 .info-box.active1 {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 .info-box p {
   font-family: 'Nunito', sans-serif;
@@ -471,12 +468,12 @@ h2 {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow2);
   opacity: 0;
-  transform: translateX(3rem);
+  transform: translateY(3rem);
   transition: all 0.5s ease-in;
 }
 .about-image.active2 {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 @media (max-width: 1200px) {
   .about-image {
@@ -558,7 +555,6 @@ h2 {
   transition: all 0.6s ease-in-out;
 }
 
-/* Reveal animation when active */
 #cont1.active1,
 #cont2.active2,
 #cont3.active3,
@@ -569,7 +565,6 @@ h2 {
   transform: translateY(0);
 }
 
-/* Container positions */
 .experience .container.left {
   left: -4%;
   transform: translate(2rem, -4rem);
@@ -606,16 +601,16 @@ h2 {
 }
 
 .experience .arrow-icons i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 2rem;
   height: 2rem;
   font-size: 2.3rem;
   background: var(--background-color);
-  color: var(--heading2-color);
-  display: inline-flex;
-  justify-content: center;
+  color: var(--heading-color);
 }
 
-/* Arrows */
 .experience .left::before,
 .experience .right::before {
   content: ' ';
@@ -639,15 +634,13 @@ h2 {
   border-color: transparent var(--main-color) transparent transparent;
 }
 
-/* Tag and Description */
 .experience .tag {
-  font-size: 1.2rem;
-  padding: 0.8rem 1rem 0.5rem 1rem;
+  padding: 0.2rem 0;
   color: var(--btn-color);
 }
 
 .experience .desc {
-  padding: 0 1rem 1rem;
+  padding-bottom: 1rem;
 }
 
 .experience .desc p {
@@ -659,22 +652,11 @@ h2 {
   text-align: center;
 }
 
-/* More Button */
 .morebtn {
   display: flex;
   justify-content: center;
   margin: 2rem 0;
 }
-
-/* .morebtn .btn {
-  position: relative;
-  padding: 1.1rem 1.2rem;
-  border-radius: var(--border-radius);
-  color: var(--btn-color);
-  background: var(--main-color);
-  box-shadow: var(--box-shadow3);
-  transition: 0.3s;
-} */
 
 .morebtn .btn span {
   font-weight: 600;
@@ -727,7 +709,6 @@ h2 {
     font-size: 1.4rem;
   }
 
-  /* Consistent reveal for all on mobile */
   #cont1,
   #cont2,
   #cont3,
@@ -746,6 +727,12 @@ h2 {
   #cont6.active6 {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+@media (max-width: 460px) {
+  .experience .container.right .arrow-icons,
+  .experience .container.left .arrow-icons {
+    left: -5%;
   }
 }
 
@@ -1009,7 +996,7 @@ form .button-area {
   background: transparent;
 }
 .footer .box-container .box .share a:hover {
-  color: var(--bluehover-color);
+  color: #a4a24b97;
 }
 .footer .rights {
   position: absolute;
@@ -1195,7 +1182,7 @@ form .button-area {
   width: 0%;
   left: 0;
   bottom: -5px;
-  background-color: var(--heading2-color);
+  background-color: var(--heading-color);
   animation: underlineGrow 2s infinite linear;
 }
 
