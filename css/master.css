@@ -253,7 +253,7 @@ h2 {
 }
 .introduction-text p {
   font-size: 1.5rem;
-  line-height: 1;
+  line-height: 1.2;
   margin-top: 0.4rem;
   color: var(--text-color);
   font-weight: 600;
@@ -364,6 +364,9 @@ h2 {
     width: 100%;
     top: 15%;
   }
+  .introduction-text p {
+    line-height: 1;
+  }
   .introduction-text .about-btn {
     left: calc(50% - 8.7rem);
   }
@@ -372,10 +375,7 @@ h2 {
   }
   .tilt-wrapper {
     max-width: 100%;
-    left: 5%;
     top: 62%;
-  }
-  .tilt-wrapper.active2 {
     left: 0;
   }
   .tilt-card img {
@@ -732,7 +732,7 @@ h2 {
   #cont4,
   #cont5,
   #cont6 {
-    transform: translateY(-4rem);
+    transform: translate(-2rem, -4rem);
     opacity: 0;
   }
 
