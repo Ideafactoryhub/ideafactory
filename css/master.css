@@ -56,6 +56,7 @@ body::-webkit-scrollbar {
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--background-color);
+  overflow-x: hidden;
   transition: all 0.5s ease-in;
 }
 h2 {
@@ -206,9 +207,9 @@ h2 {
   .header-area .links li {
     margin-left: 0;
     width: 100%;
-    min-height: 12vh;
+    height: 12vh;
     text-align: center;
-    padding-top: 1rem;
+    padding: 1rem 0;
   }
   .header-area .links li a {
     font-size: 1.5rem;
@@ -419,6 +420,7 @@ h2 {
     max-width: 14rem;
   }
 }
+
 /* End Home Page */
 /* Start About Us */
 .about-us {
