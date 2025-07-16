@@ -97,22 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   };
 
-  // Key sections
   observeOnce(document.getElementById('home'), 'active1');
   observeOnce(document.getElementById('tiltContainer'), 'active2');
   observeOnce(document.getElementById('infoBox'), 'active1');
   observeOnce(document.getElementById('aboutImg'), 'active2');
   observeOnce(document.getElementById('contactLeft'), 'active1');
   observeOnce(document.getElementById('contact-form'), 'active2');
+  observeOnce(document.getElementById('reviews'), 'active1');
 
-  // Experience cards
   ['cont1', 'cont2', 'cont3', 'cont4', 'cont5', 'cont6'].forEach(
     (id, index) => {
       observeOnce(document.getElementById(id), `active${index + 1}`);
     },
   );
 
-  // ========== Work Section with Delayed Reveal ==========
+  // ========== Work Section Delayed Reveal ==========
   const workSection = document.getElementById('work');
   const work1 = document.getElementById('work1');
   const work2 = document.getElementById('work2');
@@ -130,9 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       },
-      {
-        threshold: 0.15,
-      },
+      { threshold: 0.15 },
     );
     workObserver.observe(workSection);
   }
@@ -144,4 +141,60 @@ document.addEventListener('DOMContentLoaded', () => {
     themeBtn.querySelector('span.sun').classList.toggle('active');
     themeBtn.querySelector('span.moon').classList.toggle('active');
   });
+
+  // ========== Reviews ==========
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewList = document.getElementById('reviewList');
+  const leftBtn = document.querySelector('.scroll-btn.left');
+  const rightBtn = document.querySelector('.scroll-btn.right');
+
+  function updateScrollButtonsVisibility() {
+    const canScroll = reviewList.scrollWidth > reviewList.clientWidth;
+    leftBtn.style.display = canScroll ? 'block' : 'none';
+    rightBtn.style.display = canScroll ? 'block' : 'none';
+  }
+
+  function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviewList.innerHTML = '';
+
+    reviews.forEach((rev) => {
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      card.innerHTML = `
+        <h3><i class="fas fa-user" style="color: white;"></i> ${rev.name}</h3>
+        <p>${rev.text}</p>
+      `;
+      reviewList.appendChild(card);
+    });
+
+    updateScrollButtonsVisibility();
+  }
+
+  reviewForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('reviewerName').value.trim();
+    const text = document.getElementById('reviewText').value.trim();
+    if (name && text) {
+      const newReview = { name, text };
+      const existing = JSON.parse(localStorage.getItem('reviews')) || [];
+      existing.unshift(newReview);
+      localStorage.setItem('reviews', JSON.stringify(existing));
+      loadReviews();
+      reviewForm.reset();
+    }
+  });
+
+  window.scrollReviewsLeft = function () {
+    reviewList.scrollBy({ left: -300, behavior: 'smooth' });
+    setTimeout(updateScrollButtonsVisibility, 400);
+  };
+
+  window.scrollReviewsRight = function () {
+    reviewList.scrollBy({ left: 300, behavior: 'smooth' });
+    setTimeout(updateScrollButtonsVisibility, 400);
+  };
+
+  loadReviews();
 });
+localStorage.clear();

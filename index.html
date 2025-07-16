@@ -42,6 +42,7 @@
             <li><a href="#" data-section=".about-us">About</a></li>
             <li><a href="#" data-section=".experience">Work</a></li>
             <li><a href="#" data-section=".contact">Contact</a></li>
+            <li><a href="#" data-section=".reviews">Reviews</a></li>
           </ul>
         </nav>
         <div class="theme-btn">
@@ -126,7 +127,6 @@
         </div>
       </div>
     </section>
-
     <!-- About Us Section -->
     <section class="about-us" id="about-us">
       <div class="container">
@@ -216,7 +216,7 @@
 
         <div class="container left" id="cont6">
           <div class="arrow-icons">
-            <i class="fas fa-copyright"></i>
+            <i class="fa-solid fa-closed-captioning"></i>
           </div>
           <div class="content">
             <div class="tag"><h2>Idea Copyright</h2></div>
@@ -237,68 +237,110 @@
         </div>
       </div>
     </section>
-
-    <section class="contact">
-      <div class="overlay"></div>
-      <div class="container">
-        <h2>Your Idea</h2>
-        <div class="left" id="contactLeft">
-          <div class="contact-pic">
-            <img src="./imgs/bg.png" alt="Contact" />
+    <div class="world">
+      <section class="contact">
+        <div class="overlay"></div>
+        <div class="container">
+          <h2>Your Idea</h2>
+          <div class="left" id="contactLeft">
+            <div class="contact-pic">
+              <img src="./imgs/bg.png" alt="Contact" />
+            </div>
           </div>
+          <form
+            action="https://getform.io/f/bkknndvb"
+            method="POST"
+            class="contact-form"
+            id="contact-form"
+          >
+            <div class="form-group">
+              <div class="field">
+                <input type="text" name="name" placeholder="Name" required />
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="field">
+                <input type="email" name="email" placeholder="Email" required />
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="field-row">
+                <div class="field select-field">
+                  <select name="category" class="select" required>
+                    <option value="" disabled selected hidden>Fields</option>
+                    <option value="environment">Environment</option>
+                    <option value="technology">Technology</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="education">Education</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <i class="fas fa-list"></i>
+                </div>
+
+                <div class="img-upload">
+                  <input type="file" name="image" id="imageInput" />
+                  <label for="imageInput" class="custom-file-label">
+                    <i class="fas fa-image"></i>
+                    <p>Browse</p>
+                  </label>
+                </div>
+              </div>
+              <div class="message">
+                <textarea
+                  name="message"
+                  placeholder="Enter your idea..."
+                  required
+                ></textarea>
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+            </div>
+            <div class="button-area">
+              <button type="submit">
+                Submit <i class="fa fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
         </div>
-        <form
-          action="https://getform.io/f/bkknndvb"
-          method="POST"
-          class="contact-form"
-          id="contact-form"
-        >
-          <div class="form-group">
+      </section>
+      <!-- Start Reviews-->
+      <section class="reviews" id="reviews">
+        <div class="container">
+          <h2 class="heading">Reviews</h2>
+          <div class="scroll-container">
+            <button class="scroll-btn left" onclick="scrollReviewsLeft()">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="review-list" id="reviewList"></div>
+            <button class="scroll-btn right" onclick="scrollReviewsRight()">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+          <form id="reviewForm" class="review-form">
             <div class="field">
-              <input type="text" name="name" placeholder="Name" required />
+              <input
+                type="text"
+                name="name"
+                id="reviewerName"
+                placeholder="Your Name"
+                required
+              />
               <i class="fas fa-user"></i>
             </div>
             <div class="field">
-              <input type="email" name="email" placeholder="Email" required />
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="field">
-              <select name="category" class="select" required>
-                <option value="" disabled selected hidden>Fields</option>
-                <option value="environment">Environment</option>
-                <option value="technology">Technology</option>
-                <option value="marketing">Marketing</option>
-                <option value="education">Education</option>
-                <option value="other">Other</option>
-              </select>
-
-              <i class="fas fa-list"></i>
-              <div class="img-upload">
-                <input type="file" name="image" id="imageInput" />
-                <label for="imageInput" class="custom-file-label">
-                  <i class="fas fa-image"></i>
-                  <p>Browse</p>
-                </label>
-              </div>
-            </div>
-
-            <div class="message">
               <textarea
-                name="message"
-                placeholder="Enter your idea..."
+                name="review"
+                id="reviewText"
+                placeholder="Write your review..."
                 required
               ></textarea>
-              <i class="fa-solid fa-lightbulb"></i>
+              <i class="fas fa-pen"></i>
             </div>
-          </div>
-          <div class="button-area">
-            <button type="submit">
-              Submit <i class="fa fa-paper-plane"></i>
+            <button type="submit" class="btn">
+              Send Review <i class="fa-solid fa-share"></i>
             </button>
-          </div>
-        </form>
-      </div>
-    </section>
+          </form>
+        </div>
+      </section>
+    </div>
+    <!-- End Reviews-->
     <!-- Footer -->
     <footer class="footer">
       <div class="box-container">
