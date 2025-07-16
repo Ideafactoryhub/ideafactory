@@ -300,44 +300,6 @@
         </div>
       </section>
       <!-- Start Reviews-->
-      <section class="reviews" id="reviews">
-        <div class="container">
-          <h2 class="heading">Reviews</h2>
-          <div class="scroll-container">
-            <button class="scroll-btn left" onclick="scrollReviewsLeft()">
-              <i class="fa-solid fa-arrow-left"></i>
-            </button>
-            <div class="review-list" id="reviewList"></div>
-            <button class="scroll-btn right" onclick="scrollReviewsRight()">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </div>
-          <form id="reviewForm" class="review-form">
-            <div class="field">
-              <input
-                type="text"
-                name="name"
-                id="reviewerName"
-                placeholder="Your Name"
-                required
-              />
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="field">
-              <textarea
-                name="review"
-                id="reviewText"
-                placeholder="Write your review..."
-                required
-              ></textarea>
-              <i class="fas fa-pen"></i>
-            </div>
-            <button type="submit" class="btn">
-              Send Review <i class="fa-solid fa-share"></i>
-            </button>
-          </form>
-        </div>
-      </section>
     </div>
     <!-- End Reviews-->
     <!-- Footer -->
@@ -415,5 +377,9 @@
       <div class="tooltip">Support Us <i class="fa-solid fa-heart"></i></div>
     </div>
     <script src="js/master.js"></script>
+    <!-- Firebase SDKs -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js"></script> -->
+    <script type="module" src="js/firebase-setup.js"></script>
   </body>
 </html>
