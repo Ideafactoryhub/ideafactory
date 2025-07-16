@@ -735,16 +735,15 @@ h2 {
   text-align: center;
   position: relative;
   background: rgb(150 150 150 / 20%);
+  z-index: 3;
 }
-.contact .overlay {
-  /* background-image: url(../imgs/contact.png);
-  opacity: 0.8;
+.world {
+  background-image: url(../imgs/contact.png);
+  opacity: 1;
   background-size: contain;
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%; */
+  height: 100%;
+  z-index: 1;
 }
 .contact .container {
   position: absolute;
@@ -931,14 +930,6 @@ form .button-area {
 }
 /* End Contact */
 /* Start Reviews */
-.world {
-  background-image: url(../imgs/contact.png);
-  opacity: 0.8;
-  background-size: contain;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
 .reviews {
   opacity: 0;
   transform: translateY(4rem);
