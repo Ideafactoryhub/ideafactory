@@ -7,7 +7,6 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <link rel="icon" href="./imgs/IdeaFactory2.jpg" type="image/png" />
-
     <title>IdeaFactory</title>
     <!-- Font Awesome -->
     <link
@@ -19,9 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="css/normalize.css" /> -->
     <link rel="stylesheet" href="css/master.css" />
   </head>
   <body>
@@ -51,12 +48,10 @@
         </div>
       </div>
     </header>
-
     <!-- Home Section -->
     <section class="home-page">
       <div class="container">
         <div class="introduction-text" id="home">
-          <!-- <div class="content"> -->
           <h2>
             Welcome to<br />
             IdeaFactory
@@ -65,8 +60,6 @@
             Where ideas inspire,<br />
             and innovation begins!
           </p>
-          <!-- </div> -->
-
           <div class="about-btn">
             <a href="#" data-section=".about-us" class="btn">
               <span>About</span>
@@ -149,7 +142,6 @@
         </div>
       </div>
     </section>
-
     <!-- Experience Section -->
     <section class="experience" id="experience">
       <h2 class="heading">Our Work</h2>
@@ -165,7 +157,6 @@
             </div>
           </div>
         </div>
-
         <div class="container left" id="cont2">
           <div class="arrow-icons">
             <i class="fa-solid fa-brain"></i>
@@ -177,7 +168,6 @@
             </div>
           </div>
         </div>
-
         <div class="container right" id="cont3">
           <div class="arrow-icons">
             <i class="fa-solid fa-lightbulb"></i>
@@ -189,7 +179,6 @@
             </div>
           </div>
         </div>
-
         <div class="container left" id="cont4">
           <div class="arrow-icons">
             <i class="fa-solid fa-handshake"></i>
@@ -201,7 +190,6 @@
             </div>
           </div>
         </div>
-
         <div class="container right" id="cont5">
           <div class="arrow-icons">
             <i class="fa-solid fa-user-gear"></i>
@@ -213,7 +201,6 @@
             </div>
           </div>
         </div>
-
         <div class="container left" id="cont6">
           <div class="arrow-icons">
             <i class="fa-solid fa-closed-captioning"></i>
@@ -225,7 +212,6 @@
             </div>
           </div>
         </div>
-
         <div class="morebtn">
           <a
             href="https://web.facebook.com/profile.php?id=61577015096606"
@@ -273,7 +259,6 @@
                   </select>
                   <i class="fas fa-list"></i>
                 </div>
-
                 <div class="img-upload">
                   <input type="file" name="image" id="imageInput" />
                   <label for="imageInput" class="custom-file-label">
@@ -300,6 +285,70 @@
         </div>
       </section>
       <!-- Start Reviews-->
+      <section class="reviews" id="reviews">
+        <div class="container">
+          <h2 class="heading">Reviews</h2>
+          <div class="scroll-container">
+            <button class="scroll-btn left" onclick="scrollReviewsLeft()">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="review-list" id="reviewList"></div>
+            <button class="scroll-btn right" onclick="scrollReviewsRight()">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+          <!-- <form id="reviewForm" class="review-form">
+            <div class="field">
+              <input
+                type="text"
+                name="name"
+                id="reviewerName"
+                placeholder="Your Name"
+                required
+              />
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="field">
+              <textarea
+                name="review"
+                id="reviewText"
+                placeholder="Write your review..."
+                required
+              ></textarea>
+              <i class="fas fa-pen"></i>
+            </div>
+            <button type="submit" class="btn">
+              Send Review <i class="fa-solid fa-share"></i>
+            </button>
+          </form> -->
+          <form id="reviewForm" class="review-form">
+            <div class="field">
+              <input
+                type="text"
+                name="name"
+                id="reviewerName"
+                placeholder="Your Name"
+                required
+              />
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="field">
+              <textarea
+                name="message"
+                id="reviewText"
+                placeholder="Write your review..."
+                required
+              ></textarea>
+              <i class="fas fa-pen"></i>
+            </div>
+            <button type="submit" class="btn">
+              Send Review <i class="fa-solid fa-share"></i>
+            </button>
+          </form>
+
+          <div id="reviewList" class="review-container"></div>
+        </div>
+      </section>
     </div>
     <!-- End Reviews-->
     <!-- Footer -->
@@ -376,10 +425,15 @@
       ></a>
       <div class="tooltip">Support Us <i class="fa-solid fa-heart"></i></div>
     </div>
-    <script src="js/master.js"></script>
-    <!-- Firebase SDKs -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js"></script> -->
-    <script type="module" src="js/firebase-setup.js"></script>
+    <script type="module" src="js/master.js"></script>
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        addDoc,
+      } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+    </script>
   </body>
 </html>

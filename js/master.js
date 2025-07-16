@@ -1,3 +1,27 @@
+// Firebase imports (MUST be outside DOMContentLoaded)
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: 'AIzaSyDuRl8o5jM5IJre8tSREsaRjAmuROTG2hs',
+  authDomain: 'ideafactory-2d67e.firebaseapp.com',
+  projectId: 'ideafactory-2d67e',
+  storageBucket: 'ideafactory-2d67e.appspot.com',
+  messagingSenderId: '801823458198',
+  appId: '1:801823458198:web:926c95f5542dfeffbf93b7',
+  measurementId: 'G-RGVVZ6EPM5',
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 document.addEventListener('DOMContentLoaded', () => {
   // ========== Navigation Scroll and Mobile Menu ==========
   const allLinks = document.querySelectorAll('[data-section]');
@@ -43,12 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', () => {
     const visible = window.scrollY > 100;
-    supportBtn.classList.toggle('active', visible);
-    supportBtn2.classList.toggle('active', visible);
+    supportBtn?.classList.toggle('active', visible);
+    supportBtn2?.classList.toggle('active', visible);
   });
 
   [supportBtn, supportBtn2].forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+    btn?.addEventListener('click', (e) => {
       e.preventDefault();
       window.open(
         'https://paypal.me/hamzaelbeialy',
@@ -96,18 +120,24 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     observer.observe(el);
   };
-  observeOnce(document.getElementById('home'), 'active1');
-  observeOnce(document.getElementById('tiltContainer'), 'active2');
-  observeOnce(document.getElementById('infoBox'), 'active1');
-  observeOnce(document.getElementById('aboutImg'), 'active2');
-  observeOnce(document.getElementById('contactLeft'), 'active1');
-  observeOnce(document.getElementById('contact-form'), 'active2');
-  observeOnce(document.getElementById('reviews'), 'active1');
-  ['cont1', 'cont2', 'cont3', 'cont4', 'cont5', 'cont6'].forEach(
-    (id, index) => {
-      observeOnce(document.getElementById(id), `active${index + 1}`);
-    },
+
+  // Animate sections on scroll
+  [
+    { id: 'home', className: 'active1' },
+    { id: 'tiltContainer', className: 'active2' },
+    { id: 'infoBox', className: 'active1' },
+    { id: 'aboutImg', className: 'active2' },
+    { id: 'contactLeft', className: 'active1' },
+    { id: 'contact-form', className: 'active2' },
+    { id: 'reviews', className: 'active1' },
+  ].forEach(({ id, className }) =>
+    observeOnce(document.getElementById(id), className),
   );
+
+  ['cont1', 'cont2', 'cont3', 'cont4', 'cont5', 'cont6'].forEach((id, i) => {
+    observeOnce(document.getElementById(id), `active${i + 1}`);
+  });
+
   // ========== Work Section Delayed Reveal ==========
   const workSection = document.getElementById('work');
   const work1 = document.getElementById('work1');
@@ -116,44 +146,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (workSection && work1 && work2 && work3) {
     const workObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            work1.classList.add('active');
-            setTimeout(() => work2.classList.add('active'), 500);
-            setTimeout(() => work3.classList.add('active'), 1000);
-            observer.unobserve(entry.target);
-          }
-        });
+      ([entry], observer) => {
+        if (entry.isIntersecting) {
+          work1.classList.add('active');
+          setTimeout(() => work2.classList.add('active'), 500);
+          setTimeout(() => work3.classList.add('active'), 1000);
+          observer.unobserve(entry.target);
+        }
       },
-      { threshold: 0.15 },
+      { threshold: 0.25 },
     );
     workObserver.observe(workSection);
   }
+
   // ========== Theme Toggle ==========
   const themeBtn = document.querySelector('.theme-btn');
-  themeBtn.addEventListener('click', () => {
+  themeBtn?.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
-    themeBtn.querySelector('span.sun').classList.toggle('active');
-    themeBtn.querySelector('span.moon').classList.toggle('active');
+    themeBtn.querySelector('span.sun')?.classList.toggle('active');
+    themeBtn.querySelector('span.moon')?.classList.toggle('active');
   });
-  // ========== Reviews ==========
+
+  // ========== Reviews (Firebase Firestore) ==========
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
   const leftBtn = document.querySelector('.scroll-btn.left');
   const rightBtn = document.querySelector('.scroll-btn.right');
 
-  function updateScrollButtonsVisibility() {
-    const canScroll = reviewList.scrollWidth > reviewList.clientWidth;
-    leftBtn.style.display = canScroll ? 'block' : 'none';
-    rightBtn.style.display = canScroll ? 'block' : 'none';
-  }
-
-  function loadReviews() {
-    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  async function loadReviews() {
     reviewList.innerHTML = '';
-
-    reviews.forEach((rev) => {
+    const querySnapshot = await getDocs(collection(db, 'reviews'));
+    querySnapshot.forEach((doc) => {
+      const rev = doc.data();
       const card = document.createElement('div');
       card.className = 'review-card';
       card.innerHTML = `
@@ -162,33 +186,41 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       reviewList.appendChild(card);
     });
-
     updateScrollButtonsVisibility();
   }
 
-  reviewForm.addEventListener('submit', function (e) {
+  reviewForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('reviewerName').value.trim();
     const text = document.getElementById('reviewText').value.trim();
+
     if (name && text) {
-      const newReview = { name, text };
-      const existing = JSON.parse(localStorage.getItem('reviews')) || [];
-      existing.unshift(newReview);
-      localStorage.setItem('reviews', JSON.stringify(existing));
-      loadReviews();
-      reviewForm.reset();
+      try {
+        await addDoc(collection(db, 'reviews'), { name, text });
+        reviewForm.reset();
+        loadReviews();
+      } catch (err) {
+        console.error('Error adding review:', err);
+      }
     }
   });
 
-  window.scrollReviewsLeft = function () {
+  function updateScrollButtonsVisibility() {
+    const canScroll = reviewList.scrollWidth > reviewList.clientWidth;
+    leftBtn.style.display = canScroll ? 'block' : 'none';
+    rightBtn.style.display = canScroll ? 'block' : 'none';
+  }
+
+  window.scrollReviewsLeft = () => {
     reviewList.scrollBy({ left: -300, behavior: 'smooth' });
     setTimeout(updateScrollButtonsVisibility, 400);
   };
 
-  window.scrollReviewsRight = function () {
+  window.scrollReviewsRight = () => {
     reviewList.scrollBy({ left: 300, behavior: 'smooth' });
     setTimeout(updateScrollButtonsVisibility, 400);
   };
 
+  // Load all reviews initially
   loadReviews();
 });
