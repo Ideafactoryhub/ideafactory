@@ -1174,10 +1174,6 @@ form .button-area {
   border-radius: 1.3rem;
   cursor: pointer;
 }
-#scroll-top:hover {
-  background: var(--btn-color);
-  color: var(--main-color);
-}
 .scroll .tooltip,
 .support .tooltip {
   position: fixed;
@@ -1232,11 +1228,6 @@ form .button-area {
   color: var(--btn-color);
   border-radius: 1.3rem;
   cursor: pointer;
-}
-
-#supportUs:hover {
-  background: var(--btn-color);
-  color: var(--main-color);
 }
 .support .tooltip {
   left: 5.2rem;

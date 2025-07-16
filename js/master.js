@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     observer.observe(el);
   };
-
   observeOnce(document.getElementById('home'), 'active1');
   observeOnce(document.getElementById('tiltContainer'), 'active2');
   observeOnce(document.getElementById('infoBox'), 'active1');
@@ -104,13 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
   observeOnce(document.getElementById('contactLeft'), 'active1');
   observeOnce(document.getElementById('contact-form'), 'active2');
   observeOnce(document.getElementById('reviews'), 'active1');
-
   ['cont1', 'cont2', 'cont3', 'cont4', 'cont5', 'cont6'].forEach(
     (id, index) => {
       observeOnce(document.getElementById(id), `active${index + 1}`);
     },
   );
-
   // ========== Work Section Delayed Reveal ==========
   const workSection = document.getElementById('work');
   const work1 = document.getElementById('work1');
@@ -133,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     workObserver.observe(workSection);
   }
-
   // ========== Theme Toggle ==========
   const themeBtn = document.querySelector('.theme-btn');
   themeBtn.addEventListener('click', () => {
@@ -141,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     themeBtn.querySelector('span.sun').classList.toggle('active');
     themeBtn.querySelector('span.moon').classList.toggle('active');
   });
-
   // ========== Reviews ==========
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
