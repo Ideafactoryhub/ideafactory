@@ -631,7 +631,6 @@ h2 {
   color: rgba(255, 255, 255, 0.696);
   font-family: 'Nunito', sans-serif;
   line-height: 1.4;
-  font-weight: bold;
   text-align: center;
 }
 .morebtn {
@@ -954,18 +953,22 @@ form .button-area {
 }
 .review-card {
   padding: 1rem;
-  max-width: 20rem;
+  max-width: 15rem;
   min-width: 10rem;
   max-height: 11rem;
-  overflow-y: scroll;
   scrollbar-width: none;
+  overflow-y: scroll;
+}
+.review-card p {
+  font-size: 0.8rem;
+  line-height: 1;
 }
 .review-list {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
   scroll-behavior: smooth;
-  gap: 1.5rem;
+  gap: 1rem;
   padding: 1rem;
   max-width: 100%;
   scrollbar-width: none;
