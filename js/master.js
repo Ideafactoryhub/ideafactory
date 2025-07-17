@@ -5,6 +5,9 @@ import {
   collection,
   getDocs,
   addDoc,
+  orderBy,
+  query,
+  serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 // Firebase configuration
@@ -29,18 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const linksContainer = document.querySelector(
     '.header-area .links-container',
   );
-
   toggleBtn.onclick = () => {
     toggleBtn.classList.toggle('active');
     linksContainer.classList.toggle('active');
   };
-
   allLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       allLinks.forEach((l) => l.classList.remove('active'));
       link.classList.add('active');
-
       const targetSelector = link.dataset.section || link.getAttribute('href');
       const target = document.querySelector(targetSelector);
       if (target) {
@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
           target.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
-
       toggleBtn.classList.remove('active');
       linksContainer.classList.remove('active');
     });
@@ -64,13 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========== Support Buttons ==========
   const supportBtn = document.getElementById('supportUs');
   const supportBtn2 = document.getElementById('supportUs2');
-
   window.addEventListener('scroll', () => {
     const visible = window.scrollY > 100;
     supportBtn?.classList.toggle('active', visible);
     supportBtn2?.classList.toggle('active', visible);
   });
-
   [supportBtn, supportBtn2].forEach((btn) => {
     btn?.addEventListener('click', (e) => {
       e.preventDefault();
@@ -85,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========== Tilt Card ==========
   const card = document.getElementById('tiltCard');
   const container = document.getElementById('tiltContainer');
-
   if (card && container) {
     container.addEventListener('mousemove', (e) => {
       const bounds = container.getBoundingClientRect();
@@ -95,11 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const yRotation = ((centerX - e.clientX) / 20).toFixed(2);
       card.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale(1.08)`;
     });
-
     container.addEventListener('mouseenter', () => {
       card.style.transition = 'transform 0.15s ease';
     });
-
     container.addEventListener('mouseleave', () => {
       card.style.transition = 'transform 0.3s ease';
       card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
@@ -121,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   };
 
-  // Animate sections on scroll
   [
     { id: 'home', className: 'active1' },
     { id: 'tiltContainer', className: 'active2' },
@@ -133,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ].forEach(({ id, className }) =>
     observeOnce(document.getElementById(id), className),
   );
-
   ['cont1', 'cont2', 'cont3', 'cont4', 'cont5', 'cont6'].forEach((id, i) => {
     observeOnce(document.getElementById(id), `active${i + 1}`);
   });
@@ -143,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const work1 = document.getElementById('work1');
   const work2 = document.getElementById('work2');
   const work3 = document.getElementById('work3');
-
   if (workSection && work1 && work2 && work3) {
     const workObserver = new IntersectionObserver(
       ([entry], observer) => {
@@ -167,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     themeBtn.querySelector('span.moon')?.classList.toggle('active');
   });
 
-  // ========== Reviews (Firebase Firestore) ==========
+  // ========== Reviews (Firestore) ==========
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
   const leftBtn = document.querySelector('.scroll-btn.left');
@@ -175,28 +166,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadReviews() {
     reviewList.innerHTML = '';
-    const querySnapshot = await getDocs(collection(db, 'reviews'));
-    querySnapshot.forEach((doc) => {
-      const rev = doc.data();
-      const card = document.createElement('div');
-      card.className = 'review-card';
-      card.innerHTML = `
+    try {
+      const snapshot = await getDocs(collection(db, 'reviews'));
+      const reviews = [];
+
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.name && data.text) {
+          reviews.push({
+            name: data.name,
+            text: data.text,
+            timestamp: data.timestamp || { toMillis: () => 0 }, // fallback
+          });
+        }
+      });
+
+      // Sort by timestamp descending (newest first)
+      reviews.sort((a, b) => b.timestamp.toMillis() - a.timestamp.toMillis());
+
+      // Display reviews
+      reviews.forEach((rev) => {
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        card.innerHTML = `
         <h3><i class="fas fa-user" style="color: white;"></i> ${rev.name}</h3>
         <p>${rev.text}</p>
       `;
-      reviewList.appendChild(card);
-    });
-    updateScrollButtonsVisibility();
+        reviewList.prepend(card);
+      });
+
+      updateScrollButtonsVisibility();
+    } catch (err) {
+      console.error('Error loading reviews:', err);
+    }
   }
 
   reviewForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('reviewerName').value.trim();
     const text = document.getElementById('reviewText').value.trim();
-
     if (name && text) {
       try {
-        await addDoc(collection(db, 'reviews'), { name, text });
+        await addDoc(collection(db, 'reviews'), {
+          name,
+          text,
+          timestamp: serverTimestamp(),
+        });
         reviewForm.reset();
         loadReviews();
       } catch (err) {
@@ -221,6 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(updateScrollButtonsVisibility, 400);
   };
 
-  // Load all reviews initially
+  // Load reviews when page loads
   loadReviews();
 });

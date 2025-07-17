@@ -130,7 +130,7 @@ h2 {
 
 .header-area .links li {
   display: inline-block;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 .header-area .links li a {
   color: var(--btn-color);
@@ -145,11 +145,11 @@ h2 {
 .header-area .links li a::before {
   content: '';
   position: absolute;
-  height: 3px;
-  width: 4.5rem;
+  height: 4px;
+  width: 4.2rem;
   border-radius: 63px;
   background-color: var(--btn-color);
-  bottom: -23px;
+  bottom: -24px;
   left: 50%;
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
@@ -224,7 +224,8 @@ h2 {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .home-page .container {
   position: absolute;
@@ -445,7 +446,7 @@ h2 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
   text-align: left;
 }
@@ -570,7 +571,7 @@ h2 {
   background: var(--main-color);
   border-radius: var(--border-radius);
   position: relative;
-  padding: 1.3rem;
+  padding: 1.2rem;
   box-shadow: var(--boxR-shadow);
 }
 .experience .container.left .content {
@@ -620,6 +621,7 @@ h2 {
 .experience .tag,
 .review-card h3 {
   padding: 0.2rem 0;
+  line-height: 1.1;
   color: var(--btn-color);
 }
 .experience .desc {
@@ -636,7 +638,7 @@ h2 {
 .morebtn {
   display: flex;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 .button-area button,
 .morebtn .btn,
@@ -679,7 +681,7 @@ h2 {
 @media (max-width: 870px) {
   .experience .container {
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 0.7rem 2rem;
     left: 0 !important;
   }
   .experience .timeline::after {
@@ -728,21 +730,17 @@ h2 {
 }
 
 /* Start Contact us */
-.contact {
-  height: 41rem;
+.world {
+  background-image: url(../imgs/contact.png);
+  background-size: contain;
+}
+.contact,
+.reviews {
+  height: 37rem;
   background-position: center;
   text-align: center;
   position: relative;
   background: rgb(150 150 150 / 20%);
-  z-index: 3;
-}
-.world {
-  background-image: url(../imgs/contact.png);
-  opacity: 1;
-  background-size: contain;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
 }
 .contact .container {
   position: absolute;
@@ -929,27 +927,19 @@ form .button-area {
 }
 /* End Contact */
 /* Start Reviews */
-.reviews {
-  opacity: 0;
-  transform: translateY(4rem);
-  background-position: center;
-  text-align: center;
-  position: relative;
-  background: rgb(150 150 150 / 20%);
-  transition: 0.8s ease;
-  min-height: 41rem;
-}
-.reviews.active1 {
-  z-index: 3;
-  opacity: 1;
-  transform: translateY(0);
-}
 .reviews .container {
+  opacity: 0;
+  transform: translateY(6rem);
   position: absolute;
   top: 0;
   left: 10%;
   width: 80%;
   height: 100%;
+  transition: all 0.5s ease-in;
+}
+.reviews .container.active1 {
+  opacity: 1;
+  transform: translateY(0);
 }
 .review-card {
   padding: 1rem;
@@ -967,6 +957,7 @@ form .button-area {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  flex-direction: row-reverse;
   scroll-behavior: smooth;
   gap: 1rem;
   padding: 1rem;
@@ -974,7 +965,7 @@ form .button-area {
   scrollbar-width: none;
 }
 .review-form {
-  max-width: 500px;
+  max-width: 35rem;
   margin: 0 auto;
 }
 .review-card h3 i {
@@ -986,11 +977,12 @@ form .button-area {
   margin-top: 5rem;
   float: right;
 }
-
 .scroll-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.2rem;
+  width: 120%;
+  left: -10%;
   position: relative;
   overflow: hidden;
 }
@@ -1002,10 +994,9 @@ form .button-area {
   border: none;
   color: white;
   font-size: 1.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.7rem;
   cursor: pointer;
-  border-radius: 8px;
-  z-index: 1;
+  border-radius: 1.2rem;
 }
 /* End Reviews */
 /* footer section starts */
@@ -1111,6 +1102,7 @@ form .button-area {
   }
   .footer .box-container .box {
     text-align: center;
+    margin: 1rem 0;
   }
   .footer .box-container .box h3 {
     font-size: 1.6rem;
@@ -1119,7 +1111,7 @@ form .button-area {
     justify-content: center;
   }
   .footer .box-container .box {
-    flex: 1 1 50%;
+    flex: 1 1 55%;
   }
   .footer .rights {
     font-size: 0.8rem;
