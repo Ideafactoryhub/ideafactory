@@ -933,12 +933,12 @@ form .button-area {
 .reviews {
   opacity: 0;
   transform: translateY(4rem);
-  min-height: 87vh;
   background-position: center;
   text-align: center;
   position: relative;
   background: rgb(150 150 150 / 20%);
   transition: 0.8s ease;
+  min-height: 41rem;
 }
 .reviews.active1 {
   z-index: 3;
