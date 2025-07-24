@@ -1,16 +1,22 @@
-// Firebase imports (MUST be outside DOMContentLoaded)
+// Import Firebase functions (only needed if using module bundler or Firebase CDN in HTML)
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
 import {
   getFirestore,
   collection,
-  getDocs,
   addDoc,
-  orderBy,
-  query,
+  getDocs,
+  onSnapshot,
   serverTimestamp,
+  query,
+  orderBy,
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js';
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyDuRl8o5jM5IJre8tSREsaRjAmuROTG2hs',
   authDomain: 'ideafactory-2d67e.firebaseapp.com',
@@ -21,21 +27,25 @@ const firebaseConfig = {
   measurementId: 'G-RGVVZ6EPM5',
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ========== Navigation Scroll and Mobile Menu ==========
+  /* ---------- Navigation Scroll & Mobile Menu ---------- */
   const allLinks = document.querySelectorAll('[data-section]');
   const toggleBtn = document.querySelector('.header-area .toggle-menu');
   const linksContainer = document.querySelector(
     '.header-area .links-container',
   );
-  toggleBtn.onclick = () => {
-    toggleBtn.classList.toggle('active');
-    linksContainer.classList.toggle('active');
-  };
+
+  if (toggleBtn && linksContainer) {
+    toggleBtn.onclick = () => {
+      toggleBtn.classList.toggle('active');
+      linksContainer.classList.toggle('active');
+    };
+  }
+
   allLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -49,18 +59,18 @@ document.addEventListener('DOMContentLoaded', () => {
           target.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
-      toggleBtn.classList.remove('active');
-      linksContainer.classList.remove('active');
+      toggleBtn?.classList.remove('active');
+      linksContainer?.classList.remove('active');
     });
   });
 
-  // ========== Scroll To Top Button ==========
+  /* ---------- Scroll To Top Button ---------- */
   const scrollTopBtn = document.getElementById('scroll-top');
   window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('active', window.scrollY > 100);
+    scrollTopBtn?.classList.toggle('active', window.scrollY > 100);
   });
 
-  // ========== Support Buttons ==========
+  /* ---------- Support Buttons ---------- */
   const supportBtn = document.getElementById('supportUs');
   const supportBtn2 = document.getElementById('supportUs2');
   window.addEventListener('scroll', () => {
@@ -79,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ========== Tilt Card ==========
+  /* ---------- Tilt Card ---------- */
   const card = document.getElementById('tiltCard');
   const container = document.getElementById('tiltContainer');
   if (card && container) {
@@ -100,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ========== Observe Elements Once ==========
+  /* ---------- Intersection Observe Once Helper ---------- */
   const observeOnce = (el, className, threshold = 0.15) => {
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -126,11 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
   ].forEach(({ id, className }) =>
     observeOnce(document.getElementById(id), className),
   );
+
   ['cont1', 'cont2', 'cont3', 'cont4', 'cont5', 'cont6'].forEach((id, i) => {
     observeOnce(document.getElementById(id), `active${i + 1}`);
   });
 
-  // ========== Work Section Delayed Reveal ==========
+  /* ---------- Work Section Delayed Reveal ---------- */
   const workSection = document.getElementById('work');
   const work1 = document.getElementById('work1');
   const work2 = document.getElementById('work2');
@@ -150,7 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
     workObserver.observe(workSection);
   }
 
-  // ========== Theme Toggle ==========
+  /* =========================================================
+   * Theme Toggle Button
+   * ========================================================= */
   const themeBtn = document.querySelector('.theme-btn');
   themeBtn?.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
@@ -158,41 +171,45 @@ document.addEventListener('DOMContentLoaded', () => {
     themeBtn.querySelector('span.moon')?.classList.toggle('active');
   });
 
-  // ========== Reviews (Firestore) ==========
+  /* =========================================================
+   * Reviews (Firestore)
+   * ========================================================= */
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
   const leftBtn = document.querySelector('.scroll-btn.left');
   const rightBtn = document.querySelector('.scroll-btn.right');
 
   async function loadReviews() {
+    if (!reviewList) return;
     reviewList.innerHTML = '';
     try {
-      const snapshot = await getDocs(collection(db, 'reviews'));
+      const snap = await getDocs(collection(db, 'reviews'));
       const reviews = [];
-
-      snapshot.forEach((doc) => {
-        const data = doc.data();
+      snap.forEach((docSnap) => {
+        const data = docSnap.data();
         if (data.name && data.text) {
           reviews.push({
             name: data.name,
             text: data.text,
-            timestamp: data.timestamp || { toMillis: () => 0 }, // fallback
+            timestamp: data.timestamp ?? null,
           });
         }
       });
 
-      // Sort by timestamp descending (newest first)
-      reviews.sort((a, b) => b.timestamp.toMillis() - a.timestamp.toMillis());
+      reviews.sort(
+        (a, b) =>
+          (b.timestamp?.toMillis?.() ?? 0) - (a.timestamp?.toMillis?.() ?? 0),
+      );
 
-      // Display reviews
-      reviews.forEach((rev) => {
+      reviews.forEach((rev, index) => {
         const card = document.createElement('div');
-        card.className = 'review-card';
+        card.className = 'review-card fade-in';
+        card.style.animationDelay = `${index * 0.1}s`;
         card.innerHTML = `
-        <h3><i class="fas fa-user" style="color: white;"></i> ${rev.name}</h3>
-        <p>${rev.text}</p>
-      `;
-        reviewList.prepend(card);
+          <h3><i class="fas fa-user"></i> ${rev.name}</h3>
+          <p>${rev.text}</p>
+        `;
+        reviewList.appendChild(card);
       });
 
       updateScrollButtonsVisibility();
@@ -203,8 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   reviewForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = document.getElementById('reviewerName').value.trim();
-    const text = document.getElementById('reviewText').value.trim();
+    const nameEl = document.getElementById('reviewerName');
+    const textEl = document.getElementById('reviewText');
+    const name = nameEl?.value.trim();
+    const text = textEl?.value.trim();
     if (name && text) {
       try {
         await addDoc(collection(db, 'reviews'), {
@@ -221,21 +240,154 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function updateScrollButtonsVisibility() {
+    if (!reviewList) return;
     const canScroll = reviewList.scrollWidth > reviewList.clientWidth;
-    leftBtn.style.display = canScroll ? 'block' : 'none';
-    rightBtn.style.display = canScroll ? 'block' : 'none';
+    if (leftBtn) leftBtn.style.display = canScroll ? 'block' : 'none';
+    if (rightBtn) rightBtn.style.display = canScroll ? 'block' : 'none';
   }
 
   window.scrollReviewsLeft = () => {
-    reviewList.scrollBy({ left: -300, behavior: 'smooth' });
+    reviewList?.scrollBy({ left: -300, behavior: 'smooth' });
     setTimeout(updateScrollButtonsVisibility, 400);
   };
-
   window.scrollReviewsRight = () => {
-    reviewList.scrollBy({ left: 300, behavior: 'smooth' });
+    reviewList?.scrollBy({ left: 300, behavior: 'smooth' });
     setTimeout(updateScrollButtonsVisibility, 400);
   };
-
-  // Load reviews when page loads
   loadReviews();
+
+  /* =========================================================
+   * "Your Idea" Form (Firestore + Storage + Getform)
+   * ========================================================= */
+  const ideaForm = document.getElementById('contact-form');
+
+  if (ideaForm) {
+    ideaForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = ideaForm.name?.value.trim();
+      const email = ideaForm.email?.value.trim();
+      const category = ideaForm.category?.value;
+      const message = ideaForm.message?.value.trim();
+      const imageFile = ideaForm.image?.files[0];
+
+      if (!name || !email || !category || !message) {
+        alert('Please fill all required fields.');
+        return;
+      }
+
+      try {
+        let imageUrl = '';
+        if (imageFile) {
+          const storageRef = ref(
+            storage,
+            `ideas/${Date.now()}_${imageFile.name}`,
+          );
+          const snapshot = await uploadBytes(storageRef, imageFile);
+          imageUrl = await getDownloadURL(snapshot.ref);
+        }
+
+        await addDoc(collection(db, 'ideas'), {
+          name,
+          email,
+          category,
+          message,
+          imageUrl,
+          timestamp: serverTimestamp(),
+        });
+
+        const formData = new FormData(ideaForm);
+        fetch('https://getform.io/f/bkknndvb', {
+          method: 'POST',
+          body: formData,
+        });
+
+        ideaForm.reset();
+        alert('Idea submitted successfully!');
+      } catch (err) {
+        console.error('Error submitting idea:', err);
+        alert('Submission failed. Try again.');
+      }
+    });
+  }
+
+  /* =========================================================
+   * Realtime Display for Ideas
+   * ========================================================= */
+  function initIdeasRealtime() {
+    const ideasDisplay = document.getElementById('ideasDisplay');
+    if (!ideasDisplay) return;
+
+    const ideasRef = collection(db, 'ideas');
+    const ideasQuery = query(ideasRef, orderBy('timestamp', 'desc'));
+
+    onSnapshot(
+      ideasQuery,
+      (snapshot) => {
+        ideasDisplay.innerHTML = '';
+
+        snapshot.forEach((docSnap, index) => {
+          const idea = docSnap.data();
+          const card = document.createElement('div');
+          card.className = 'idea-card fade-in';
+          card.style.animationDelay = `${index * 0.15}s`;
+          card.innerHTML = `
+            <h4><i class="fas fa-user"></i> ${idea.name || 'Anonymous'} <span>(${idea.category || 'Other'})</span></h4>
+            ${idea.imageUrl ? `<div class="idea-image"><img src="${idea.imageUrl}" alt="Idea Image" /></div>` : ''}
+            <p>${idea.message || ''}</p>
+          `;
+          ideasDisplay.appendChild(card);
+        });
+      },
+      (err) => {
+        console.error('❌ Error loading ideas:', err);
+        ideasDisplay.innerHTML = '<p class="error">Failed to load ideas.</p>';
+      },
+    );
+  }
+
+  initIdeasRealtime();
+
+  /* =========================================================
+   * Button Effects
+   * ========================================================= */
+  const allButtons = document.querySelectorAll('button');
+  allButtons.forEach((btn) => {
+    btn.classList.add('btn-animated');
+    btn.addEventListener('mouseenter', () => btn.classList.add('hovered'));
+    btn.addEventListener('mouseleave', () => btn.classList.remove('hovered'));
+  });
+});
+// your idea btns
+document.addEventListener('DOMContentLoaded', () => {
+  const ideaList = document.getElementById('ideasDisplay');
+  const scrollUpBtn = document.getElementById('scrollUpBtn');
+  const scrollDownBtn = document.getElementById('scrollDownBtn');
+
+  function updateIdeaScrollButtonsVisibility() {
+    if (!ideaList) return;
+    const canScroll = ideaList.scrollHeight > ideaList.clientHeight;
+    if (scrollUpBtn) scrollUpBtn.style.display = canScroll ? 'block' : 'none';
+    if (scrollDownBtn)
+      scrollDownBtn.style.display = canScroll ? 'block' : 'none';
+  }
+
+  window.scrollIdeasUp = () => {
+    ideaList?.scrollBy({ top: -200, behavior: 'smooth' });
+    setTimeout(updateIdeaScrollButtonsVisibility, 400);
+  };
+
+  window.scrollIdeasDown = () => {
+    ideaList?.scrollBy({ top: 200, behavior: 'smooth' });
+    setTimeout(updateIdeaScrollButtonsVisibility, 400);
+  };
+
+  scrollUpBtn?.addEventListener('click', window.scrollIdeasUp);
+  scrollDownBtn?.addEventListener('click', window.scrollIdeasDown);
+
+  // Call once on load
+  updateIdeaScrollButtonsVisibility();
+
+  // Optional: check periodically or after idea rendering
+  setInterval(updateIdeaScrollButtonsVisibility, 1500);
 });

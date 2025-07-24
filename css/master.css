@@ -567,6 +567,7 @@ h2 {
 }
 .experience .container.left .content,
 .experience .container.right .content,
+.ideas-display .idea-card,
 .review-card {
   background: var(--main-color);
   border-radius: var(--border-radius);
@@ -619,7 +620,8 @@ h2 {
   border-color: transparent var(--main-color) transparent transparent;
 }
 .experience .tag,
-.review-card h3 {
+.review-card h3,
+.idea-card h4 {
   padding: 0.2rem 0;
   line-height: 1.1;
   color: var(--btn-color);
@@ -628,7 +630,8 @@ h2 {
   padding-bottom: 1rem;
 }
 .experience .desc p,
-.review-card p {
+.review-card p,
+.idea-card p {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.696);
   font-family: 'Nunito', sans-serif;
@@ -736,7 +739,7 @@ h2 {
 }
 .contact,
 .reviews {
-  height: 37rem;
+  min-height: 90vh;
   background-position: center;
   text-align: center;
   position: relative;
@@ -753,20 +756,38 @@ h2 {
 .reviews .heading {
   padding-top: 2rem;
 }
-#contactLeft {
-  opacity: 0;
-  transform: translateX(-3rem);
-  width: 40%;
-  position: absolute;
-  top: 27%;
+.idea-card h4 span {
+  font-size: 0.8rem;
+  color: white;
+  font-weight: normal;
+}
+.ideas-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  width: 50%;
+}
+.ideas-display {
+  width: 100%;
+  height: 25rem;
+  overflow-y: hidden;
+  padding-right: 0.5rem;
   transition: all 0.5s ease-in;
+}
+.ideas-display .idea-card {
+  margin-bottom: 1rem;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.scroll-btn:hover {
+  background-color: #555;
 }
 #contactLeft.active1 {
   opacity: 1;
   transform: translateX(0);
-}
-.contact .contact-pic img {
-  width: 22rem;
 }
 .contact .contact-form {
   opacity: 0;
@@ -774,7 +795,7 @@ h2 {
   top: 22%;
   right: 0;
   transform: translateX(3rem);
-  width: 60%;
+  width: 50%;
   transition: all 0.5s ease-in;
 }
 .contact-form.active2 {
@@ -910,19 +931,33 @@ form .message textarea,
 form .message textarea::-webkit-scrollbar {
   width: 0;
 }
-form .button-area {
+.button-area button {
   float: right;
 }
-
 @media (max-width: 870px) {
-  #contactLeft.active1 {
-    opacity: 0;
+  .contact,
+  .reviews {
+    min-height: 100vh;
+  }
+  .contact .container {
+    position: static;
+    margin-left: 10%;
+    height: auto;
+  }
+  .ideas-display {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+  .ideas-scroll-wrapper {
+    width: 100%;
   }
   .contact .contact-form,
   .contact-form.active2 {
+    position: static;
+    transform: none;
+    opacity: 1;
     width: 100%;
-    right: 0;
-    margin-right: 0;
   }
 }
 /* End Contact */
@@ -968,8 +1003,10 @@ form .button-area {
   max-width: 35rem;
   margin: 0 auto;
 }
-.review-card h3 i {
+.review-card h3 i,
+.idea-card i {
   font-size: 1.2rem;
+  color: white;
   margin-right: 0.5rem;
 }
 .review-form button.btn {

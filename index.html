@@ -227,16 +227,25 @@
       <section class="contact">
         <div class="container">
           <h2>Your Idea</h2>
-          <div class="left" id="contactLeft">
-            <div class="contact-pic">
-              <img src="./imgs/bg.png" alt="Contact" />
+          <!-- Ideas shown from Firebase -->
+          <div class="ideas-scroll-wrapper">
+            <button id="scrollUpBtn" class="scroll-btn">
+              <i class="fa-solid fa-arrow-up"></i>
+            </button>
+
+            <div class="left ideas-display" id="ideasDisplay">
+              <!-- Ideas will be inserted here dynamically -->
             </div>
+
+            <button id="scrollDownBtn" class="scroll-btn">
+              <i class="fa-solid fa-arrow-down"></i>
+            </button>
           </div>
+          <!-- Submit New Idea Form -->
           <form
-            action="https://getform.io/f/bkknndvb"
-            method="POST"
             class="contact-form"
             id="contact-form"
+            enctype="multipart/form-data"
           >
             <div class="form-group">
               <div class="field">
@@ -275,11 +284,11 @@
                 ></textarea>
                 <i class="fa-solid fa-lightbulb"></i>
               </div>
-            </div>
-            <div class="button-area">
-              <button type="submit">
-                Submit <i class="fa fa-paper-plane"></i>
-              </button>
+              <div class="button-area">
+                <button type="submit">
+                  Submit Idea <i class="fa fa-paper-plane"></i>
+                </button>
+              </div>
             </div>
           </form>
         </div>
@@ -288,15 +297,20 @@
       <section class="reviews">
         <div class="container" id="reviews">
           <h2 class="heading">Reviews</h2>
+
+          <!-- Scrollable review display area -->
           <div class="scroll-container">
             <button class="scroll-btn left" onclick="scrollReviewsLeft()">
               <i class="fa-solid fa-arrow-left"></i>
             </button>
             <div class="review-list" id="reviewList"></div>
+            <!-- Display area -->
             <button class="scroll-btn right" onclick="scrollReviewsRight()">
               <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
+
+          <!-- Review Submission Form -->
           <form id="reviewForm" class="review-form">
             <div class="field">
               <input
@@ -322,7 +336,8 @@
             </button>
           </form>
 
-          <div id="reviewList" class="review-container"></div>
+          <!-- Optional: extra container (now uniquely named) -->
+          <div id="reviewContainer" class="review-container"></div>
         </div>
       </section>
     </div>
@@ -402,14 +417,5 @@
       <div class="tooltip">Support Us <i class="fa-solid fa-heart"></i></div>
     </div>
     <script type="module" src="js/master.js"></script>
-    <script type="module">
-      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-      import {
-        getFirestore,
-        collection,
-        getDocs,
-        addDoc,
-      } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-    </script>
   </body>
 </html>
