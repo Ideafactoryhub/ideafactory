@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'tiltContainer', className: 'active2' },
     { id: 'infoBox', className: 'active1' },
     { id: 'aboutImg', className: 'active2' },
-    { id: 'contactLeft', className: 'active1' },
-    { id: 'contact-form', className: 'active2' },
+    // { id: 'ideasDisplay', className: 'active1' },
+    // { id: 'contact-form', className: 'active2' },
     { id: 'reviews', className: 'active1' },
   ].forEach(({ id, className }) =>
     observeOnce(document.getElementById(id), className),
@@ -391,3 +391,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Optional: check periodically or after idea rendering
   setInterval(updateIdeaScrollButtonsVisibility, 1500);
 });
+const contactSection = document.querySelector('.contact');
+if (contactSection) {
+  const observer = new IntersectionObserver(
+    ([entry], obs) => {
+      if (entry.isIntersecting) {
+        contactSection.classList.add('fade-up');
+        obs.unobserve(entry.target);
+      }
+    },
+    { threshold: 0.2 },
+  );
+  observer.observe(contactSection);
+}
