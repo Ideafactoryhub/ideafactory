@@ -739,7 +739,6 @@ h2 {
     url(../imgs/contact.png);
   background-size: contain;
   background-position: center;
-  background-blend-mode: lighten;
 }
 .contact,
 .reviews {
