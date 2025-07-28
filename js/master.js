@@ -1,4 +1,3 @@
-// Import Firebase functions (only needed if using module bundler or Firebase CDN in HTML)
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
 import {
   getFirestore,
@@ -7,8 +6,6 @@ import {
   getDocs,
   onSnapshot,
   serverTimestamp,
-  query,
-  orderBy,
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 import {
   getStorage,
@@ -130,8 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'tiltContainer', className: 'active2' },
     { id: 'infoBox', className: 'active1' },
     { id: 'aboutImg', className: 'active2' },
-    // { id: 'ideasDisplay', className: 'active1' },
-    // { id: 'contact-form', className: 'active2' },
     { id: 'reviews', className: 'active1' },
   ].forEach(({ id, className }) =>
     observeOnce(document.getElementById(id), className),
@@ -257,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadReviews();
 
   /* =========================================================
-   * "Your Idea" Form (Firestore + Storage + Getform)
+   * "Your Idea" Form (Firestore + Firebase Storage ONLY)
    * ========================================================= */
   const ideaForm = document.getElementById('contact-form');
 
@@ -279,85 +274,90 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         let imageUrl = '';
         if (imageFile) {
-          const storageRef = ref(
-            storage,
-            `ideas/${Date.now()}_${imageFile.name}`,
-          );
-          const snapshot = await uploadBytes(storageRef, imageFile);
-          imageUrl = await getDownloadURL(snapshot.ref);
+          try {
+            const storageRef = ref(
+              storage,
+              `ideas/${Date.now()}_${imageFile.name}`,
+            );
+            const snapshot = await uploadBytes(storageRef, imageFile);
+            imageUrl = await getDownloadURL(snapshot.ref);
+          } catch (uploadErr) {
+            console.error('🔥 Image upload failed:', uploadErr);
+            alert('Image upload failed. Check the file format and try again.');
+            return;
+          }
+
+          await addDoc(collection(db, 'ideas'), {
+            name,
+            email,
+            category,
+            message,
+            imageUrl,
+            timestamp: serverTimestamp(),
+          });
+
+          ideaForm.reset();
+          alert('✅ Idea submitted successfully!');
         }
-
-        await addDoc(collection(db, 'ideas'), {
-          name,
-          email,
-          category,
-          message,
-          imageUrl,
-          timestamp: serverTimestamp(),
-        });
-
-        const formData = new FormData(ideaForm);
-        fetch('https://getform.io/f/bkknndvb', {
-          method: 'POST',
-          body: formData,
-        });
-
-        ideaForm.reset();
-        alert('Idea submitted successfully!');
       } catch (err) {
-        console.error('Error submitting idea:', err);
-        alert('Submission failed. Try again.');
+        console.error('❌ Error submitting idea:', err);
+        alert('Submission failed. Try again later.');
       }
     });
   }
-
-  /* =========================================================
-   * Realtime Display for Ideas
-   * ========================================================= */
-  function initIdeasRealtime() {
-    const ideasDisplay = document.getElementById('ideasDisplay');
-    if (!ideasDisplay) return;
-
-    const ideasRef = collection(db, 'ideas');
-    const ideasQuery = query(ideasRef, orderBy('timestamp', 'desc'));
-
-    onSnapshot(
-      ideasQuery,
-      (snapshot) => {
-        ideasDisplay.innerHTML = '';
-
-        snapshot.forEach((docSnap, index) => {
-          const idea = docSnap.data();
-          const card = document.createElement('div');
-          card.className = 'idea-card fade-in';
-          card.style.animationDelay = `${index * 0.15}s`;
-          card.innerHTML = `
-            <h4><i class="fas fa-user"></i> ${idea.name || 'Anonymous'} <span>(${idea.category || 'Other'})</span></h4>
-            ${idea.imageUrl ? `<div class="idea-image"><img src="${idea.imageUrl}" alt="Idea Image" /></div>` : ''}
-            <p>${idea.message || ''}</p>
-          `;
-          ideasDisplay.appendChild(card);
-        });
-      },
-      (err) => {
-        console.error('❌ Error loading ideas:', err);
-        ideasDisplay.innerHTML = '<p class="error">Failed to load ideas.</p>';
-      },
-    );
-  }
-
-  initIdeasRealtime();
-
-  /* =========================================================
-   * Button Effects
-   * ========================================================= */
-  const allButtons = document.querySelectorAll('button');
-  allButtons.forEach((btn) => {
-    btn.classList.add('btn-animated');
-    btn.addEventListener('mouseenter', () => btn.classList.add('hovered'));
-    btn.addEventListener('mouseleave', () => btn.classList.remove('hovered'));
-  });
 });
+function initIdeasRealtime() {
+  const ideasDisplay = document.getElementById('ideasDisplay');
+  if (!ideasDisplay) return;
+
+  const ideasRef = collection(db, 'ideas');
+  onSnapshot(
+    ideasRef,
+    (snapshot) => {
+      ideasDisplay.innerHTML = '';
+      const ideas = [];
+
+      snapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        if (data.name && data.message) {
+          ideas.push({
+            ...data,
+            timestamp: data.timestamp?.toMillis?.() ?? 0,
+          });
+        }
+      });
+
+      // Sort by most recent first
+      ideas.sort((a, b) => b.timestamp - a.timestamp);
+
+      ideas.forEach((idea, index) => {
+        const card = document.createElement('div');
+        card.className = 'idea-card fade-in';
+        card.style.animationDelay = `${index * 0.15}s`;
+        card.innerHTML = `
+          <h4><i class="fas fa-user"></i> ${idea.name || 'Anonymous'} 
+            <span>(${idea.category || 'Other'})</span>
+          </h4>
+          ${
+            idea.imageUrl
+              ? `<div class="idea-image"><img src="${idea.imageUrl}" alt="Idea Image" /></div>`
+              : ''
+          }
+          <p>${idea.message || ''}</p>
+        `;
+        ideasDisplay.appendChild(card);
+      });
+    },
+    (err) => {
+      console.error('❌ Error loading ideas:', err);
+      ideasDisplay.innerHTML =
+        '<p class="error">Failed to load ideas. Please try again later.</p>';
+    },
+  );
+}
+
+initIdeasRealtime();
+
 // your idea btns
 document.addEventListener('DOMContentLoaded', () => {
   const ideaList = document.getElementById('ideasDisplay');

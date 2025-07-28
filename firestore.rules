@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Anyone can read reviews, only allow writes if the data is valid
+    match /reviews/{document=**} {
+      allow read: if true;
+      allow write: if request.resource.data.name is string &&
+                    request.resource.data.text is string &&
+                    request.resource.data.name.size() > 0 &&
+                    request.resource.data.text.size() > 0;
+    }
+
+    // Same for ideas: readable by all, write only if form data is valid
+    match /ideas/{document=**} {
+      allow read: if true;
+      allow write: if request.resource.data.name is string &&
+                    request.resource.data.email is string &&
+                    request.resource.data.category is string &&
+                    request.resource.data.message is string &&
+                    request.resource.data.name.size() > 0 &&
+                    request.resource.data.email.size() > 0 &&
+                    request.resource.data.message.size() > 0;
+    }
+
+  }
+}
