@@ -224,22 +224,22 @@ h2 {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 .home-page .container {
-  position: absolute;
+  position: relative;
   width: 80%;
-  left: 10%;
+  margin: 0 auto;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 #home {
   opacity: 0;
-  position: absolute;
   width: 50%;
-  top: 30%;
-  left: 0%;
-  transform: translateX(-3rem);
   transition: all 0.5s ease-in;
   z-index: 1;
 }
@@ -247,7 +247,6 @@ h2 {
   opacity: 1;
   transform: translateX(0);
 }
-
 .introduction-text h2 {
   font-size: 3rem;
   font-weight: 800;
@@ -261,8 +260,7 @@ h2 {
   font-weight: 600;
 }
 .socials .social-icons {
-  position: absolute;
-  margin-top: 5.5rem;
+  margin-top: 2rem;
   width: 100%;
 }
 .socials .social-icons li {
@@ -280,19 +278,17 @@ h2 {
   border-radius: 1.3rem;
   box-shadow: var(--box-shadow3);
 }
-.social-icons a:active,
-.social-icons a:focus,
 .social-icons a:hover {
   color: var(--main-color);
   background-color: var(--btn-color);
 }
 .introduction-text .about-btn {
-  position: absolute;
   margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 .introduction-text .btn,
 .introduction-text .btn2 {
-  position: absolute;
   padding: 0.9rem 0.11rem;
   width: 8rem;
   text-align: center;
@@ -302,9 +298,7 @@ h2 {
   background: var(--main-color);
   box-shadow: var(--box-shadow3);
   font-family: 'Nunito', sans-serif;
-}
-.introduction-text .btn2 {
-  margin-left: 8.5rem;
+  cursor: pointer;
 }
 .introduction-text .btn span,
 .introduction-text .btn2 span {
@@ -325,65 +319,52 @@ h2 {
 .introduction-text .btn2:hover i {
   transform: translateX(5px);
 }
-.tilt-wrapper {
+.tilt-wrapper,
+.about-image {
   opacity: 0;
-  position: absolute;
-  transform: translateX(3rem);
-  top: 30%;
   max-width: 20rem;
-  right: 0;
+  width: 100%;
   transition: all 0.5s ease-in;
-  z-index: 0;
-  perspective: 35rem;
+  border-radius: var(--border-radius);
+  box-shadow: 1rem 1rem var(--btn-color);
 }
 .home-page .active2 {
   opacity: 1;
   transform: translateX(0);
 }
-.img-cont {
-  position: absolute;
-  width: 100%;
-}
-.tilt-card {
-  transform-style: preserve-3d;
-  transition: all 0.5s ease-in;
-}
-.tilt-card img {
-  width: 100%;
-  transition: all 0.5s ease-in;
-  transform: scale(1);
-  border-radius: var(--border-radius);
-  box-shadow: 1rem 1rem var(--btn-color);
-}
-.tilt-card:hover img {
-  transform: scale(1.05);
-}
+
 @media (max-width: 870px) {
   .home-page .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2rem;
     text-align: center;
+    height: auto;
   }
   #home {
     width: 100%;
-    top: 15%;
-  }
-  .introduction-text p {
-    line-height: 1;
+    transform: none;
+    top: auto;
+    margin-top: 4rem;
+    left: auto;
   }
   .introduction-text .about-btn {
-    left: calc(50% - 8.7rem);
+    justify-content: center;
   }
-  .introduction-text .btn2 {
-    margin-left: 8.7rem;
+  .introduction-text p {
+    line-height: 1.4;
   }
   .tilt-wrapper {
-    max-width: 100%;
-    top: 62%;
-    left: 0;
-  }
-  .tilt-card img {
+    position: relative;
+    top: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    transform: none;
     max-width: 18rem;
   }
 }
+
 @media (max-width: 400px) {
   .introduction-text h2 {
     font-size: 2.3rem;
@@ -391,24 +372,18 @@ h2 {
   .introduction-text p {
     font-size: 1.2rem;
   }
-  .introduction-text .about-btn {
-    left: calc(50% - 6rem);
-  }
   .introduction-text .btn,
   .introduction-text .btn2 {
     font-size: 0.8rem;
     width: 5.5rem;
     padding: 0.7rem 0.1rem;
   }
-  .introduction-text .btn2 {
-    margin-left: 6rem;
-  }
   .introduction-text .btn i,
   .introduction-text .btn2 i {
     font-size: 0.9rem;
   }
   .socials .social-icons {
-    margin-top: 4.5rem;
+    margin-top: 1.5rem;
   }
   .social-icons a {
     font-size: 1.6rem;
@@ -417,7 +392,7 @@ h2 {
     height: 2.5rem;
     border-radius: 1rem;
   }
-  .tilt-card img {
+  .tilt-wrapper {
     max-width: 14rem;
   }
 }
@@ -468,13 +443,15 @@ h2 {
   color: var(--text-color);
 }
 .about-image {
-  flex: 1 1 35%;
+  position: relative;
+  box-shadow: var(--box-shadow2);
+  /* flex: 1 1 35%;
   max-width: 24rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow2);
   opacity: 0;
   transform: translateY(3rem);
-  transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in; */
 }
 .about-image.active2 {
   opacity: 1;
@@ -881,38 +858,6 @@ form .select {
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1rem;
-}
-.img-upload {
-  position: relative;
-  flex: 1;
-  min-width: 45%;
-  margin: 1rem 0;
-  height: 3rem;
-}
-.img-upload input[type='file'] {
-  display: none;
-}
-.custom-file-label {
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #333;
-  background: var(--form-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-}
-.custom-file-label i {
-  font-size: 1.2rem;
-  color: #333;
-}
-.custom-file-label p {
-  margin: 0;
-  font-weight: 500;
-  color: #333;
 }
 form .message {
   position: relative;

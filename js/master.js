@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- Tilt Card ---------- */
-  const card = document.getElementById('tiltCard');
-  const container = document.getElementById('tiltContainer');
+  const card = document.getElementById('tiltWrapper');
+  const container = document.getElementById('tiltWrapper');
   if (card && container) {
     container.addEventListener('mousemove', (e) => {
       const bounds = container.getBoundingClientRect();
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   [
     { id: 'home', className: 'active1' },
-    { id: 'tiltContainer', className: 'active2' },
+    { id: 'tiltWrapper', className: 'active2' },
     { id: 'infoBox', className: 'active1' },
     { id: 'aboutImg', className: 'active2' },
     { id: 'reviews', className: 'active1' },
