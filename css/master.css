@@ -346,7 +346,7 @@ h2 {
     width: 100%;
     transform: none;
     top: auto;
-    margin-top: 4rem;
+    margin-top: 5rem;
     left: auto;
   }
   .introduction-text .about-btn {
@@ -358,7 +358,7 @@ h2 {
   .tilt-wrapper {
     position: relative;
     top: auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
     margin-bottom: 2rem;
     transform: none;
     max-width: 18rem;
