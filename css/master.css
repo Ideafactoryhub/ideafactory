@@ -394,7 +394,7 @@ h2 {
 /* Start About Us */
 .about-us {
   text-align: center;
-  min-height: 70vh;
+  min-height: 60vh;
 }
 .about-us .container {
   width: 80%;
@@ -484,7 +484,7 @@ h2 {
 .experience {
   position: relative;
   width: 100%;
-  margin-top: 4rem;
+  margin-top: 3rem;
   min-height: 95vh;
   box-sizing: border-box;
   text-align: center;
@@ -588,7 +588,6 @@ h2 {
 .review-card h3,
 .idea-card h4 {
   padding: 0.2rem 0;
-  line-height: 1.1;
   color: var(--btn-color);
 }
 .experience .desc {
@@ -600,8 +599,7 @@ h2 {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.696);
   font-family: 'Nunito', sans-serif;
-  line-height: 1.4;
-  text-align: center;
+  line-height: 1.3;
 }
 .morebtn {
   display: flex;
@@ -743,7 +741,7 @@ h2 {
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  width: 50%;
+  width: 54%;
 }
 .ideas-display {
   width: 100%;
@@ -786,7 +784,7 @@ form .form-group {
   height: 3rem;
   display: flex;
   position: relative;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   width: 100%;
 }
 form .field input,
@@ -853,7 +851,7 @@ form .select {
 form .message {
   position: relative;
   width: 100%;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 form .message i,
 form .message i {
