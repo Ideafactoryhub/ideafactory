@@ -256,6 +256,56 @@ document.addEventListener('DOMContentLoaded', () => {
    * ========================================================= */
   const ideaForm = document.getElementById('contact-form');
 
+  // if (ideaForm) {
+  //   ideaForm.addEventListener('submit', async (e) => {
+  //     e.preventDefault();
+
+  //     const name = ideaForm.name?.value.trim();
+  //     const email = ideaForm.email?.value.trim();
+  //     const category = ideaForm.category?.value;
+  //     const message = ideaForm.message?.value.trim();
+  //     const imageFile = ideaForm.image?.files[0];
+
+  //     if (!name || !email || !category || !message) {
+  //       alert('Please fill all required fields.');
+  //       return;
+  //     }
+
+  //     try {
+  //       let imageUrl = '';
+  //       if (imageFile) {
+  //         try {
+  //           const storageRef = ref(
+  //             storage,
+  //             `ideas/${Date.now()}_${imageFile.name}`,
+  //           );
+  //           const snapshot = await uploadBytes(storageRef, imageFile);
+  //           imageUrl = await getDownloadURL(snapshot.ref);
+  //         } catch (uploadErr) {
+  //           console.error('🔥 Image upload failed:', uploadErr);
+  //           alert('Image upload failed. Check the file format and try again.');
+  //           return;
+  //         }
+
+  //         await addDoc(collection(db, 'ideas'), {
+  //           name,
+  //           email,
+  //           category,
+  //           message,
+  //           imageUrl,
+  //           timestamp: serverTimestamp(),
+  //         });
+
+  //         ideaForm.reset();
+  //         alert('✅ Idea submitted successfully!');
+  //       }
+  //     } catch (err) {
+  //       console.error('❌ Error submitting idea:', err);
+  //       alert('Submission failed. Try again later.');
+  //     }
+  //   });
+  // }
+
   if (ideaForm) {
     ideaForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -264,41 +314,30 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = ideaForm.email?.value.trim();
       const category = ideaForm.category?.value;
       const message = ideaForm.message?.value.trim();
-      const imageFile = ideaForm.image?.files[0];
 
       if (!name || !email || !category || !message) {
         alert('Please fill all required fields.');
         return;
       }
 
+      // Optional: validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
       try {
-        let imageUrl = '';
-        if (imageFile) {
-          try {
-            const storageRef = ref(
-              storage,
-              `ideas/${Date.now()}_${imageFile.name}`,
-            );
-            const snapshot = await uploadBytes(storageRef, imageFile);
-            imageUrl = await getDownloadURL(snapshot.ref);
-          } catch (uploadErr) {
-            console.error('🔥 Image upload failed:', uploadErr);
-            alert('Image upload failed. Check the file format and try again.');
-            return;
-          }
+        await addDoc(collection(db, 'ideas'), {
+          name,
+          email,
+          category,
+          message,
+          timestamp: serverTimestamp(),
+        });
 
-          await addDoc(collection(db, 'ideas'), {
-            name,
-            email,
-            category,
-            message,
-            imageUrl,
-            timestamp: serverTimestamp(),
-          });
-
-          ideaForm.reset();
-          alert('✅ Idea submitted successfully!');
-        }
+        ideaForm.reset();
+        alert('✅ Idea submitted successfully!');
       } catch (err) {
         console.error('❌ Error submitting idea:', err);
         alert('Submission failed. Try again later.');
