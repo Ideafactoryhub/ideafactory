@@ -340,7 +340,6 @@ h2 {
   }
   #home {
     width: 100%;
-    transform: none;
     top: auto;
     margin-top: 5rem;
     left: auto;
@@ -352,7 +351,6 @@ h2 {
     position: relative;
     top: auto;
     margin: 3rem 0;
-    transform: none;
   }
 }
 @media (max-width: 400px) {
