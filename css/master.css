@@ -404,6 +404,7 @@ h2 {
 .experience .heading,
 .contact h2,
 .reviews .heading {
+  text-transform: capitalize;
   position: relative;
   font-size: 3.5rem;
   margin-bottom: 1rem;
@@ -573,6 +574,7 @@ h2 {
 .review-card h3,
 .idea-card h4 {
   padding: 0.2rem 0;
+  line-height: 1;
   color: var(--btn-color);
 }
 .experience .desc {
