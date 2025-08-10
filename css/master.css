@@ -900,7 +900,7 @@ form .message textarea::-webkit-scrollbar {
   left: 10%;
   width: 80%;
   height: 100%;
-  transition: all 0.5s ease-in;
+  transition: all 0.7s ease-in;
 }
 .reviews .container.active1 {
   opacity: 1;
@@ -930,7 +930,7 @@ form .message textarea::-webkit-scrollbar {
   scrollbar-width: none;
 }
 .review-form {
-  max-width: 35rem;
+  max-width: 40rem;
   margin: 0 auto;
 }
 .review-card h3 i,
