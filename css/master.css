@@ -234,7 +234,7 @@ h2 {
 }
 #home {
   opacity: 0;
-  width: 50%;
+  width: 55%;
   transform: translateX(-3rem);
   transition: all 0.5s ease-in;
   z-index: 1;
@@ -244,14 +244,13 @@ h2 {
   transform: translateX(0);
 }
 .introduction-text h2 {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 4rem;
   color: var(--heading-color);
 }
 .introduction-text p {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   line-height: 1.2;
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   color: var(--text-color);
   font-weight: 600;
 }
@@ -262,13 +261,13 @@ h2 {
   display: inline-block;
 }
 .social-icons a {
-  font-size: 2.4rem;
+  font-size: 3rem;
   display: inline-block;
-  line-height: 3.7rem;
+  line-height: 4rem;
   color: var(--btn-color);
   background-color: var(--main-color);
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   text-align: center;
   border-radius: 1.3rem;
   box-shadow: var(--box-shadow3);
@@ -278,17 +277,17 @@ h2 {
   background-color: var(--btn-color);
 }
 .introduction-text .about-btn {
-  margin: 1rem 0;
+  margin: 0.9rem 0;
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 .introduction-text .btn,
 .introduction-text .btn2 {
   padding: 0.9rem 0.11rem;
-  width: 8rem;
+  width: 9rem;
   text-align: center;
   border-radius: var(--border-radius);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--btn-color);
   background: var(--main-color);
   box-shadow: var(--box-shadow3);
@@ -317,7 +316,7 @@ h2 {
 .tilt-wrapper,
 .about-image {
   opacity: 0;
-  max-width: 20rem;
+  max-width: 23rem;
   transform: translateX(3rem);
   width: 100%;
   transition: all 0.5s ease-in;
@@ -340,9 +339,14 @@ h2 {
   }
   #home {
     width: 100%;
-    top: auto;
-    margin-top: 5rem;
-    left: auto;
+    margin-top: 4rem;
+  }
+  .introduction-text h2 {
+    font-size: 3.2rem;
+  }
+  .introduction-text p {
+    font-size: 1.5rem;
+    line-height: 1;
   }
   .introduction-text .about-btn {
     justify-content: center;
@@ -377,14 +381,17 @@ h2 {
     margin-top: 1.5rem;
   }
   .social-icons a {
-    font-size: 1.6rem;
-    line-height: 2.5rem;
+    font-size: 1.8rem;
+    line-height: 1.45;
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
   }
   .tilt-wrapper {
     margin: 5rem 0;
+  }
+  .tilt-wrapper,
+  .about-image {
     max-width: 17rem;
   }
 }
@@ -432,13 +439,14 @@ h2 {
   font-family: 'Nunito', sans-serif;
   text-transform: none;
   font-size: 1.7rem;
-  line-height: 1.5;
+  line-height: 1.3;
   color: var(--text-color);
 }
 .about-image {
   position: relative;
   box-shadow: var(--box-shadow2);
   transform: translateY(3rem);
+  max-width: 20rem;
 }
 .about-image.active2 {
   opacity: 1;
@@ -455,12 +463,11 @@ h2 {
   }
   .info-box p {
     font-size: 1.5rem;
-    line-height: 1.3;
   }
 }
 @media (max-width: 555px) {
   .info-box p {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 1.1;
   }
 }
@@ -1014,9 +1021,6 @@ form .message textarea::-webkit-scrollbar {
   margin-right: 0.5rem;
   color: var(--btn-color);
   background: transparent;
-}
-.footer .box-container .box .share a:hover {
-  color: #a4a24b97;
 }
 .footer .rights {
   position: absolute;
