@@ -17,15 +17,15 @@
   --border-radius: 2rem;
 }
 .dark-theme {
-  --background-color: rgb(0 0 0);
-  --heading-color: #b5b5b5;
-  --text-color: #8b8b8b;
-  --main-color: rgb(26 26 26);
-  --form-color: #a5a3a3;
+  --background-color: rgb(26 25 23);
+  --heading-color: #ecebeb;
+  --text-color: #949494;
+  --main-color: rgb(50 50 50);
+  --form-color: #a2a2a2;
   --boxL-shadow: -8px 8px 8px rgb(107 107 107 / 50%);
   --boxR-shadow: 8px 8px 8px rgb(107 107 107 / 50%);
-  --box-shadow2: 20px 20px 25px rgb(133 105 19 / 80%);
-  --box-shadow3: 0 4px 12px rgb(189 188 90 / 40%);
+  --box-shadow2: 20px 20px 20px rgb(150 149 149 / 80%);
+  --box-shadow3: 0 4px 12px rgba(173, 173, 173, 0.4);
 }
 *,
 *::before,
