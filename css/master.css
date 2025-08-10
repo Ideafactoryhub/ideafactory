@@ -456,7 +456,7 @@ h2 {
 }
 @media (max-width: 870px) {
   .about-us {
-    min-height: 100vh;
+    min-height: 80vh;
     margin-top: 4rem;
   }
   .about-content {
