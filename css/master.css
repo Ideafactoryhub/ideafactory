@@ -7,7 +7,7 @@
   --hover-color: #4a4d37f5;
   --main-color: rgb(23, 23, 23);
   --btn-color: #d4af37;
-  --text-color: #575757;
+  --text-color: #6c6c6c;
   --background-color: #cdcdcd;
   --boxL-shadow: -8px 8px 7px rgba(0, 0, 0, 0.5);
   --boxR-shadow: 8px 8px 7px rgba(0, 0, 0, 0.5);
@@ -245,12 +245,14 @@ h2 {
 }
 .introduction-text h2 {
   font-size: 4rem;
+  line-height: 0.8;
   color: var(--heading-color);
 }
 .introduction-text p {
   font-size: 1.7rem;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-top: 0.5rem;
+  font-style: italic;
   color: var(--text-color);
   font-weight: 600;
 }
