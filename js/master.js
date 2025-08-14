@@ -445,9 +445,11 @@ if (contactSection) {
 }
 // animation for typing effect
 const textArray = [
-  'Help people bring their ideas to life.',
-  'Bringing innovators together to share and inspire.',
-  'Turning ideas into real projects.',
+  'Turning creative ideas into reality.',
+  'Empowering minds to innovate and create.',
+  'Transforming ideas into impactful projects.',
+  'Connecting innovators to inspire change.',
+  'Building a community of thinkers and doers.',
 ];
 
 let i = 0; // Current text index
