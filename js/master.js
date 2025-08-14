@@ -455,7 +455,7 @@ const textArray = [
 let i = 0; // Current text index
 let j = 0; // Character index
 let isDeleting = false;
-let speed = 120; // Typing speed
+let speed = 100; // Typing speed
 
 function typeEffect() {
   const typingElement = document.getElementById('typing');
