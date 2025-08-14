@@ -445,11 +445,11 @@ if (contactSection) {
 }
 // animation for typing effect
 const textArray = [
-  'Turning creative ideas into reality.',
-  'Empowering minds to innovate and create.',
-  'Transforming ideas into impactful projects.',
-  'Connecting innovators to inspire change.',
-  'Building a community of thinkers and doers.',
+  'Turning ideas into reality.',
+  'Empowering innovation and creativity.',
+  'Transforming ideas into projects.',
+  'Connecting innovators for change.',
+  'Building a creative community.',
 ];
 
 let i = 0; // Current text index

@@ -250,18 +250,6 @@ h2 {
   line-height: 0.8;
   color: var(--heading-color);
 }
-.introduction-text p {
-  font-size: 1.7rem;
-  line-height: 1.1;
-  margin-top: 0.5rem;
-  font-style: italic;
-  color: var(--text-color);
-  font-weight: bold;
-}
-.introduction-text p span {
-  font-size: 1.4rem;
-  font-weight: normal;
-}
 .socials .social-icons {
   width: 100%;
 }
@@ -354,10 +342,10 @@ h2 {
   .introduction-text h2 {
     font-size: 3.2rem;
   }
-  .introduction-text p {
+  /* .introduction-text p {
     font-size: 1.5rem;
     line-height: 1;
-  }
+  } */
   .introduction-text .about-btn {
     justify-content: center;
   }
@@ -374,9 +362,9 @@ h2 {
   .introduction-text h2 {
     font-size: 2.3rem;
   }
-  .introduction-text p {
+  /* .introduction-text p {
     font-size: 1.2rem;
-  }
+  } */
   .introduction-text .btn,
   .introduction-text .btn2 {
     font-size: 0.8rem;
@@ -1236,15 +1224,28 @@ form .message textarea::-webkit-scrollbar {
   margin-top: 10px;
   border-radius: 8px;
 }
-#typing {
+.typing-container {
+  max-width: 100%;
+  white-space: normal;
+  font-size: 1.5rem;
+  margin-top: 0.3rem;
+  min-height: 3rem;
+  word-break: break-word;
+  font-style: italic;
   font-weight: bold;
   color: var(--text-color);
-  border-right: 4px solid var(--btn-color);
-  white-space: nowrap;
-  overflow: hidden;
-  animation: blinkCursor 0.8s steps(1) infinite;
-  min-width: 28ch;
+  line-height: 1;
 }
+#typing {
+  border-right: 4px solid var(--btn-color);
+  white-space: normal;
+  overflow-wrap: break-word;
+  display: inline-block;
+  max-width: 100%;
+  animation: blinkCursor 0.8s steps(1) infinite;
+  font-size: 1.3rem;
+}
+
 @keyframes blinkCursor {
   0%,
   50% {
