@@ -37,7 +37,7 @@
   outline: none;
   border: none;
   text-transform: none;
-  transition: all 0.3s linear;
+  transition: all 0.4s linear;
 }
 
 * {
@@ -236,7 +236,7 @@ h2 {
   opacity: 0;
   filter: blur(8px);
   width: 55%;
-  transform: translateX(-3rem);
+  transform: translateX(-5rem);
   transition: var(--transition);
   z-index: 1;
 }
@@ -256,7 +256,11 @@ h2 {
   margin-top: 0.5rem;
   font-style: italic;
   color: var(--text-color);
-  font-weight: 600;
+  font-weight: bold;
+}
+.introduction-text p span {
+  font-size: 1.4rem;
+  font-weight: normal;
 }
 .socials .social-icons {
   width: 100%;
@@ -322,7 +326,7 @@ h2 {
   opacity: 0;
   filter: blur(8px);
   max-width: 23rem;
-  transform: translateX(3rem);
+  transform: translateX(5rem);
   width: 100%;
   transition: var(--transition);
   border-radius: var(--border-radius);
@@ -1231,4 +1235,23 @@ form .message textarea::-webkit-scrollbar {
   height: auto;
   margin-top: 10px;
   border-radius: 8px;
+}
+#typing {
+  font-weight: bold;
+  color: var(--text-color);
+  border-right: 4px solid var(--btn-color);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blinkCursor 0.8s steps(1) infinite;
+  min-width: 28ch;
+}
+@keyframes blinkCursor {
+  0%,
+  50% {
+    border-color: var(--btn-color);
+  }
+  51%,
+  100% {
+    border-color: transparent;
+  }
 }

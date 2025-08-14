@@ -443,3 +443,38 @@ if (contactSection) {
   );
   observer.observe(contactSection);
 }
+// animation for typing effect
+const textArray = [
+  'Help people bring their ideas to life.',
+  'Bringing innovators together to share and inspire.',
+  'Turning ideas into real projects.',
+];
+
+let i = 0; // Current text index
+let j = 0; // Character index
+let isDeleting = false;
+let speed = 120; // Typing speed
+
+function typeEffect() {
+  const typingElement = document.getElementById('typing');
+  const currentText = textArray[i];
+
+  if (!isDeleting) {
+    typingElement.textContent = currentText.substring(0, j++);
+    if (j > currentText.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1800); // Pause before deleting
+      return;
+    }
+  } else {
+    typingElement.textContent = currentText.substring(0, j--);
+    if (j < 0) {
+      isDeleting = false;
+      i = (i + 1) % textArray.length;
+    }
+  }
+
+  setTimeout(typeEffect, isDeleting ? 60 : speed);
+}
+
+typeEffect();
