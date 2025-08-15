@@ -86,27 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Tilt Card ---------- */
-  const card = document.getElementById('tiltWrapper');
-  const container = document.getElementById('tiltWrapper');
-  if (card && container) {
-    container.addEventListener('mousemove', (e) => {
-      const bounds = container.getBoundingClientRect();
-      const centerX = bounds.left + bounds.width / 2;
-      const centerY = bounds.top + bounds.height / 2;
-      const xRotation = ((e.clientY - centerY) / 20).toFixed(2);
-      const yRotation = ((centerX - e.clientX) / 20).toFixed(2);
-      card.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale(1.08)`;
-    });
-    container.addEventListener('mouseenter', () => {
-      card.style.transition = 'transform 0.15s ease';
-    });
-    container.addEventListener('mouseleave', () => {
-      card.style.transition = 'transform 0.3s ease';
-      card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-    });
-  }
-
   /* ---------- Intersection Observe Once Helper ---------- */
   const observeOnce = (el, className, threshold = 0.15) => {
     if (!el) return;
@@ -482,8 +461,4 @@ function typeEffect() {
 typeEffect();
 setTimeout(() => {
   document.querySelector('.tilt-wrapper').classList.add('animated-tilt');
-}, 1000); // matches fadeInImage duration
-const home = document.getElementById('home');
-setTimeout(() => {
-  home.classList.add('active1');
-}, 50); // small delay so initial state is painted
+}, 1000);

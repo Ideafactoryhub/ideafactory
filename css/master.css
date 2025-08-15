@@ -237,7 +237,7 @@ h2 {
   filter: blur(8px);
   width: 55%;
   transition: var(--transition);
-  transform: translateX(-8rem);
+  transform: translateX(-6rem);
   z-index: 1;
 }
 #home.active1 {
@@ -314,6 +314,7 @@ h2 {
   padding: 0.9rem 0.11rem;
   width: 9rem;
   text-align: center;
+  transition: 0.3s;
   border-radius: var(--border-radius);
   font-size: 1.4rem;
   color: var(--btn-color);
@@ -329,8 +330,6 @@ h2 {
 .introduction-text .btn i,
 .introduction-text .btn2 i {
   margin-left: 0.3rem;
-  font-size: 1.3rem;
-  transition: 0.3s;
 }
 .introduction-text .btn:hover,
 .introduction-text .btn2:hover {
@@ -347,7 +346,7 @@ h2 {
   filter: blur(8px);
   max-width: 23rem;
   width: 100%;
-  transform: translateX(8rem);
+  transform: translateX(6rem);
   transition: var(--transition);
   border-radius: var(--border-radius);
   box-shadow: 1rem 1rem var(--btn-color);
