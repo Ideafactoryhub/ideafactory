@@ -480,3 +480,10 @@ function typeEffect() {
 }
 
 typeEffect();
+setTimeout(() => {
+  document.querySelector('.tilt-wrapper').classList.add('animated-tilt');
+}, 1000); // matches fadeInImage duration
+const home = document.getElementById('home');
+setTimeout(() => {
+  home.classList.add('active1');
+}, 50); // small delay so initial state is painted
