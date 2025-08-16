@@ -1335,7 +1335,7 @@ form .message textarea::-webkit-scrollbar {
   animation-duration: 25s;
 }
 
-/* @keyframes move {
+@keyframes move {
   0% {
     top: 100%;
     transform: translateX(0) scale(1);
@@ -1344,4 +1344,4 @@ form .message textarea::-webkit-scrollbar {
     top: -10%;
     transform: translateX(50px) scale(0.5);
   }
-} */
+}
