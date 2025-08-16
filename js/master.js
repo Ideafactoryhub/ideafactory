@@ -462,52 +462,18 @@ typeEffect();
 setTimeout(() => {
   document.querySelector('.tilt-wrapper').classList.add('animated-tilt');
 }, 1000);
-const canvas = document.getElementById('goldParticles');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 3 + 1;
-    this.speedX = (Math.random() - 0.5) * 1;
-    this.speedY = (Math.random() - 0.5) * 1;
-    this.color = '#bc9516';
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-  }
-}
-
-function init() {
-  for (let i = 0; i < 40; i++) {
-    particles.push(new Particle());
-  }
-}
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach((p) => {
-    p.update();
-    p.draw();
-  });
-  requestAnimationFrame(animate);
-}
-
-init();
-animate();
+particlesJS('particles-js', {
+  particles: {
+    number: { value: 60 },
+    color: { value: '#d4af37' },
+    shape: { type: 'circle' },
+    opacity: { value: 0.8 },
+    size: { value: 4, random: true },
+    move: { enable: true, speed: 2 },
+  },
+  interactivity: {
+    events: {
+      onhover: { enable: true, mode: 'repulse' },
+    },
+  },
+});
