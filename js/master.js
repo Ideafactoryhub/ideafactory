@@ -465,7 +465,7 @@ setTimeout(() => {
 particlesJS('particles-js', {
   particles: {
     number: { value: 60 },
-    color: { value: '#d4af37' },
+    color: { value: '#bc9516' },
     shape: { type: 'circle' },
     opacity: { value: 0.8 },
     size: { value: 4, random: true },

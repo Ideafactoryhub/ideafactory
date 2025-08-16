@@ -251,6 +251,9 @@ h2 {
   line-height: 0.8;
   color: var(--heading-color);
 }
+.introduction-text h2 span {
+  color: var(--heading-color);
+}
 .typing-container {
   max-width: 100%;
   white-space: normal;
@@ -1333,7 +1336,7 @@ form .message textarea::-webkit-scrollbar {
   animation-duration: 25s;
 }
 
-@keyframes move {
+/* @keyframes move {
   0% {
     top: 100%;
     transform: translateX(0) scale(1);
@@ -1342,4 +1345,4 @@ form .message textarea::-webkit-scrollbar {
     top: -10%;
     transform: translateX(50px) scale(0.5);
   }
-}
+} */
