@@ -300,7 +300,7 @@ h2 {
   width: 4rem;
   height: 4rem;
   text-align: center;
-  border-radius: 1.3rem;
+  border-radius: 30%;
   box-shadow: var(--box-shadow3);
 }
 .social-icons a:hover {
@@ -347,7 +347,7 @@ h2 {
 .about-image {
   opacity: 0;
   filter: blur(8px);
-  max-width: 23rem;
+  max-width: 22rem;
   width: 100%;
   transform: translateX(6rem);
   transition: var(--transition);
@@ -405,10 +405,6 @@ h2 {
   .introduction-text h2 {
     font-size: 3.2rem;
   }
-  /* .introduction-text p {
-    font-size: 1.5rem;
-    line-height: 1;
-  } */
   .introduction-text .about-btn {
     justify-content: center;
   }
@@ -425,9 +421,6 @@ h2 {
   .introduction-text h2 {
     font-size: 2.3rem;
   }
-  /* .introduction-text p {
-    font-size: 1.2rem;
-  } */
   .introduction-text .btn,
   .introduction-text .btn2 {
     font-size: 0.8rem;
@@ -446,7 +439,6 @@ h2 {
     line-height: 1.45;
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 0.8rem;
   }
   .tilt-wrapper {
     margin: 5rem 0;
@@ -607,7 +599,6 @@ h2 {
 .experience .container.left .arrow-icons {
   left: 105%;
 }
-
 .experience .container.right .arrow-icons {
   left: -11%;
 }
@@ -779,7 +770,7 @@ h2 {
 .contact {
   opacity: 0;
   filter: blur(8px);
-  transform: translateY(-5rem);
+  transform: translateY(-6rem);
   transition: var(--transition);
 }
 .contact.fade-up {
@@ -818,11 +809,6 @@ h2 {
 }
 .scroll-btn:hover {
   background-color: #555;
-}
-#contactLeft.active1 {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateX(0);
 }
 .contact .contact-form {
   position: absolute;
