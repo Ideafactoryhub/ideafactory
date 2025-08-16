@@ -581,11 +581,11 @@ h2 {
 }
 .experience .container.right {
   left: 54%;
-  transform: translate(-2rem, -4rem);
+  transform: translate(-3rem, -4rem);
 }
 .experience .container.left {
   left: -4%;
-  transform: translate(2rem, -4rem);
+  transform: translate(3rem, -4rem);
 }
 .experience .container.left .content,
 .experience .container.right .content,
@@ -732,7 +732,7 @@ h2 {
   #cont4,
   #cont5,
   #cont6 {
-    transform: translate(-2rem, -4rem);
+    transform: translate(-3rem, -4rem);
   }
 
   #cont1.active1,
@@ -750,7 +750,6 @@ h2 {
     left: -5%;
   }
 }
-
 /* Start Contact us */
 .world {
   background:
