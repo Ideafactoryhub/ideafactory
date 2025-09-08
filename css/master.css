@@ -5,27 +5,27 @@
   --secondry-color: rgb(0, 0, 0, 0.9);
   --heading-color: rgb(0, 0, 0);
   --hover-color: #4a4d37f5;
-  --main-color: rgb(23, 23, 23);
+  --main-color: rgb(21, 21, 21);
   --btn-color: #bc9516;
   --text-color: #6c6c6c;
-  --transition: all 0.8s ease-in-out;
-  --background-color: #cdcdcd;
+  --transition: all 1s ease-in-out;
+  --background-color: linear-gradient(to right, #c1c0c0, #979271);
   --boxL-shadow: -8px 8px 7px rgb(37 37 36 / 80%);
   --boxR-shadow: 8px 8px 7px rgb(37 37 36 / 80%);
   --box-shadow2: 20px 20px 25px rgb(37 37 36 / 80%);
-  --box-shadow3: 3px 6px 12px rgb(37 37 36 / 80%);
+  --box-shadow3: 3px 3px 10px rgb(37 37 36 / 80%);
   --form-color: #696a6d7a;
   --border-radius: 2rem;
 }
 .dark-theme {
-  --background-color: rgb(39 39 39);
+  --background-color: linear-gradient(to right, black, #3d3813);
   --heading-color: #ecebeb;
   --text-color: #949494;
   --form-color: #a2a2a2;
-  --boxL-shadow: -5px 5px 10px rgb(150 149 149 / 60%);
-  --boxR-shadow: 5px 5px 10px rgb(150 149 149 / 60%);
-  --box-shadow2: 15px 15px 18px rgb(150 149 149 / 80%);
-  --box-shadow3: 0 4px 10px rgb(100 100 100 / 80%);
+  --boxL-shadow: -5px 5px 10px rgb(81 81 81 / 60%);
+  --boxR-shadow: 5px 5px 10px rgb(81 81 81 / 60%);
+  --box-shadow2: 15px 15px 18px rgb(81 81 81 / 80%);
+  --box-shadow3: 0 4px 10px rgb(81 81 81 / 80%);
 }
 *,
 *::before,
@@ -86,12 +86,13 @@ h2 {
 }
 .header-area .theme-btn {
   position: absolute;
-  top: 1.4rem;
-  right: calc(50% - 2.5rem);
+  top: 1.5rem;
   display: flex;
-  background: rgb(171 171 171);
+  align-items: center;
+  left: calc(50% - 2.5rem);
+  background: #ababab;
   width: 5rem;
-  height: 2.5rem;
+  height: 2.2rem;
   border-radius: var(--border-radius);
   cursor: pointer;
 }
@@ -102,16 +103,19 @@ h2 {
   color: black;
 }
 .header-area .theme-btn span {
-  width: 50%;
+  width: 43%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 0.8rem;
 }
 .header-area .theme-btn .active {
   background-color: #3e3e3e;
   border-radius: var(--border-radius);
   color: var(--btn-color);
+  width: 57%;
+  height: 2.7rem;
+  font-size: 1.6rem;
 }
 .header-area .links-container {
   position: fixed;
@@ -233,18 +237,9 @@ h2 {
   justify-content: space-between;
 }
 #home {
-  opacity: 0;
-  filter: blur(8px);
   width: 55%;
   transition: var(--transition);
-  transform: translateX(-6rem);
   z-index: 1;
-}
-#home.active1 {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateX(0);
-  animation: fadeInHome 1s ease backwards;
 }
 .introduction-text h2 {
   font-size: 4rem;
@@ -258,7 +253,7 @@ h2 {
   max-width: 100%;
   white-space: normal;
   font-size: 1.5rem;
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
   min-height: 4rem;
   word-break: break-word;
   font-style: italic;
@@ -345,19 +340,11 @@ h2 {
 }
 .tilt-wrapper,
 .about-image {
-  opacity: 0;
-  filter: blur(8px);
   max-width: 22rem;
   width: 100%;
-  transform: translateX(6rem);
   transition: var(--transition);
   border-radius: var(--border-radius);
   box-shadow: 1rem 1rem 1rem var(--btn-color);
-}
-.home-page .active2 {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateX(0);
 }
 .home-page .active2.animated-tilt {
   animation: floatTilt 6s ease-in-out infinite;
@@ -479,16 +466,8 @@ h2 {
   text-align: left;
 }
 .info-box {
-  opacity: 0;
-  filter: blur(8px);
   flex: 1 1 55%;
-  transform: translateY(-3rem);
   transition: var(--transition);
-}
-.info-box.active1 {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
 }
 .info-box p {
   font-family: 'Nunito', sans-serif;
@@ -502,11 +481,6 @@ h2 {
   box-shadow: var(--box-shadow2);
   transform: translateY(3rem);
   max-width: 20rem;
-}
-.about-image.active2 {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
 }
 @media (max-width: 870px) {
   .about-us {
@@ -557,27 +531,13 @@ h2 {
   position: relative;
   width: 50%;
   box-sizing: border-box;
-  opacity: 0;
-  filter: blur(8px);
   transition: var(--transition);
-}
-#cont1.active1,
-#cont2.active2,
-#cont3.active3,
-#cont4.active4,
-#cont5.active5,
-#cont6.active6 {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
 }
 .experience .container.right {
   left: 54%;
-  transform: translate(-3rem, -4rem);
 }
 .experience .container.left {
   left: -4%;
-  transform: translate(3rem, -4rem);
 }
 .experience .container.left .content,
 .experience .container.right .content,
@@ -717,23 +677,6 @@ h2 {
   .morebtn .btn span {
     font-size: 1.4rem;
   }
-  #cont1,
-  #cont2,
-  #cont3,
-  #cont4,
-  #cont5,
-  #cont6 {
-    transform: translate(-3rem, -4rem);
-  }
-
-  #cont1.active1,
-  #cont2.active2,
-  #cont3.active3,
-  #cont4.active4,
-  #cont5.active5,
-  #cont6.active6 {
-    transform: translateY(0);
-  }
 }
 @media (max-width: 460px) {
   .experience .container.right .arrow-icons,
@@ -768,15 +711,7 @@ h2 {
   padding-top: 2rem;
 }
 .contact {
-  opacity: 0;
-  filter: blur(8px);
-  transform: translateY(-6rem);
   transition: var(--transition);
-}
-.contact.fade-up {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
 }
 .idea-card h4 span {
   font-size: 0.8rem;
@@ -932,32 +867,21 @@ form .message textarea::-webkit-scrollbar {
   .ideas-scroll-wrapper {
     width: 100%;
   }
-  .contact .contact-form,
-  .contact-form.active2 {
+  .contact .contact-form {
     position: static;
     transform: none;
-    opacity: 1;
-    filter: blur(0);
     width: 100%;
   }
 }
 /* End Contact */
 /* Start Reviews */
 .reviews .container {
-  opacity: 0;
-  filter: blur(8px);
-  transform: translateY(6rem);
   position: absolute;
   top: 0;
   left: 10%;
   width: 80%;
   height: 100%;
   transition: var(--transition);
-}
-.reviews .container.active1 {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
 }
 .review-card {
   padding: 1rem;
@@ -1244,11 +1168,11 @@ form .message textarea::-webkit-scrollbar {
 .reviews .heading::before {
   content: '';
   position: absolute;
-  height: 4px;
+  height: 5px;
   width: 0%;
   left: 0;
   bottom: -5px;
-  background-color: var(--heading-color);
+  background-color: var(--btn-color);
   animation: underlineGrow 2s infinite linear;
 }
 
@@ -1295,7 +1219,7 @@ form .message textarea::-webkit-scrollbar {
   display: block;
   width: 6px;
   height: 6px;
-  background: gold;
+  background: var(--btn-color);
   border-radius: 50%;
   animation: move 10s linear infinite;
   opacity: 0.8;

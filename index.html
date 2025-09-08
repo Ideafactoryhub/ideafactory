@@ -8,6 +8,8 @@
     />
     <link rel="icon" href="./imgs/IdeaFactory2.jpg" type="image/png" />
     <title>IdeaFactory</title>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -52,15 +54,19 @@
     <section class="home-page">
       <div class="container">
         <div class="introduction-text" id="home">
-          <h2>
+          <h2 data-aos="fade-right">
             Welcome To<br />
             <span> IdeaFactory </span>
           </h2>
-          <div class="typing-container">
+          <div
+            class="typing-container"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
             What we do: <br />
             <span id="typing"></span>
           </div>
-          <div class="about-btn">
+          <div class="about-btn" data-aos="fade-right" data-aos-delay="300">
             <a href="#" data-section=".about-us" class="btn">
               <span>About</span>
               <i class="fas fa-arrow-circle-down"></i>
@@ -70,7 +76,7 @@
             ></a>
           </div>
           <div class="socials">
-            <ul class="social-icons">
+            <ul class="social-icons" data-aos="fade-right" data-aos-delay="400">
               <li>
                 <a
                   class="facebook"
@@ -115,6 +121,7 @@
         <img
           id="tiltWrapper"
           class="tilt-wrapper"
+          data-aos="fade-left"
           src="imgs/IdeaFactory.jpg"
           alt="Hamza"
         />
@@ -132,7 +139,7 @@
       <div class="container">
         <h2>About us</h2>
         <div class="about-content">
-          <div class="info-box" id="infoBox">
+          <div class="info-box" id="infoBox" data-aos="fade-down">
             <p>
               We are a team of passionate young innovators who believe that
               every powerful idea has the potential to change the world. We
@@ -145,7 +152,12 @@
               we are here to listen and help you bring it to life.
             </p>
           </div>
-          <img src="imgs/Ifctry.jpg" class="about-image" id="aboutImg" />
+          <img
+            src="imgs/Ifctry.jpg"
+            class="about-image"
+            id="aboutImg"
+            data-aos="fade-up"
+          />
         </div>
       </div>
     </section>
@@ -153,7 +165,7 @@
     <section class="experience" id="experience">
       <h2 class="heading">Our Work</h2>
       <div class="timeline">
-        <div class="container right" id="cont1">
+        <div class="container right" id="cont1" data-aos="fade-down-right">
           <div class="arrow-icons">
             <i class="fa-solid fa-globe"></i>
           </div>
@@ -164,7 +176,7 @@
             </div>
           </div>
         </div>
-        <div class="container left" id="cont2">
+        <div class="container left" id="cont2" data-aos="fade-down-left">
           <div class="arrow-icons">
             <i class="fa-solid fa-brain"></i>
           </div>
@@ -175,7 +187,7 @@
             </div>
           </div>
         </div>
-        <div class="container right" id="cont3">
+        <div class="container right" id="cont3" data-aos="fade-down-right">
           <div class="arrow-icons">
             <i class="fa-solid fa-lightbulb"></i>
           </div>
@@ -186,7 +198,7 @@
             </div>
           </div>
         </div>
-        <div class="container left" id="cont4">
+        <div class="container left" id="cont4" data-aos="fade-down-left">
           <div class="arrow-icons">
             <i class="fa-solid fa-handshake"></i>
           </div>
@@ -197,7 +209,7 @@
             </div>
           </div>
         </div>
-        <div class="container right" id="cont5">
+        <div class="container right" id="cont5" data-aos="fade-down-right">
           <div class="arrow-icons">
             <i class="fa-solid fa-user-gear"></i>
           </div>
@@ -208,7 +220,7 @@
             </div>
           </div>
         </div>
-        <div class="container left" id="cont6">
+        <div class="container left" id="cont6" data-aos="fade-down-left">
           <div class="arrow-icons">
             <i class="fa-solid fa-closed-captioning"></i>
           </div>
@@ -232,7 +244,7 @@
     </section>
     <div class="world">
       <section class="contact">
-        <div class="container">
+        <div class="container" data-aos="fade-down" data-aos-duration="4000">
           <h2>Your Idea</h2>
           <!-- Ideas shown from Firebase -->
           <div class="ideas-scroll-wrapper">
@@ -295,7 +307,13 @@
       </section>
       <!-- Start Reviews-->
       <section class="reviews">
-        <div class="container" id="reviews">
+        <div
+          class="container"
+          id="reviews"
+          data-aos="fade-up"
+          data-aos-duration="4000"
+          data-aos-delay="200"
+        >
           <h2 class="heading">Reviews</h2>
 
           <!-- Scrollable review display area -->
@@ -416,6 +434,14 @@
     </div>
     <script type="module" src="js/master.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+      AOS.init({
+        duration: 2000,
+        once: false,
+      });
+    </script>
     <div id="particles-js"></div>
   </body>
 </html>
