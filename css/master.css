@@ -5,7 +5,7 @@
   --secondry-color: rgb(0, 0, 0, 0.9);
   --heading-color: rgb(0, 0, 0);
   --hover-color: #4a4d37f5;
-  --main-color: rgb(21, 21, 21);
+  --main-color: black;
   --btn-color: #bc9516;
   --text-color: #6c6c6c;
   --transition: all 1s ease-in-out;
@@ -18,7 +18,7 @@
   --border-radius: 2rem;
 }
 .dark-theme {
-  --background-color: linear-gradient(to right, black, #3d3813);
+  --background-color: linear-gradient(to right, black, #2a260e);
   --heading-color: #ecebeb;
   --text-color: #949494;
   --form-color: #a2a2a2;
@@ -387,7 +387,7 @@ h2 {
   }
   #home {
     width: 100%;
-    margin-top: 4rem;
+    padding-top: 20%;
   }
   .introduction-text h2 {
     font-size: 3.2rem;
@@ -403,7 +403,7 @@ h2 {
 }
 @media (max-width: 400px) {
   #home {
-    margin-top: 7rem;
+    padding-top: 30%;
   }
   .introduction-text h2 {
     font-size: 2.3rem;
