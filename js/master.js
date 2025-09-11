@@ -377,9 +377,7 @@ function updateAOS() {
       }
     }
   } else {
-    document
-      .getElementById('cont1')
-      ?.setAttribute('data-aos', 'fade-down-right');
+    document('cont1')?.setAttribute('data-aos', 'fade-down-right');
     document
       .getElementById('cont2')
       ?.setAttribute('data-aos', 'fade-down-left');
