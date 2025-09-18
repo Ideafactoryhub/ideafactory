@@ -10,6 +10,7 @@
   --text-color: #6c6c6c;
   --transition: all 1s ease-in-out;
   --background-color: linear-gradient(to right, #c1c0c0, #979271);
+  --background-icon: #c1c0c0;
   --boxL-shadow: -8px 8px 7px rgb(37 37 36 / 80%);
   --boxR-shadow: 8px 8px 7px rgb(37 37 36 / 80%);
   --box-shadow2: 20px 20px 25px rgb(37 37 36 / 80%);
@@ -19,6 +20,7 @@
 }
 .dark-theme {
   --background-color: linear-gradient(to right, black, #2a260e);
+  --background-icon: black;
   --heading-color: #ecebeb;
   --text-color: #949494;
   --form-color: #a2a2a2;
@@ -123,7 +125,7 @@ h2 {
   top: 1.9rem;
   display: flex;
   align-items: flex-end;
-  transition: var(--transition);
+  /* transition: var(--transition); */
   background: var(--main-color);
 }
 .header-area .links-container.active {
@@ -567,7 +569,7 @@ h2 {
   width: 2rem;
   height: 2rem;
   font-size: 2.3rem;
-  background: var(--background-color);
+  background: var(--background-icon);
   color: var(--heading-color);
 }
 .experience .left::before,
