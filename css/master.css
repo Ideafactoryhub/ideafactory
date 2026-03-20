@@ -1023,13 +1023,13 @@ form .message textarea::-webkit-scrollbar {
   width: 100%;
   top: calc(100% - 2.5rem);
   height: 2.5rem;
-  padding-top: 0.8%;
+  padding-top: 5px;
   text-align: center;
   background: var(--btn-color);
   border-top: 0.1rem solid #fff3;
 }
 .credit .container {
-  font-size: 1rem;
+  font-size: 1.2rem;
   position: absolute;
   width: 80%;
   left: 10%;
